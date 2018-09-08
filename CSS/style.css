@@ -1,0 +1,27 @@
+html{
+  font-family:sans-serif;
+}
+.Principio{
+  padding: 20px;
+}
+.Navegador{
+  border-bottom: 7px solid orange;
+  background-color: gray;
+}
+.nav-link{
+  color: white;
+  font-size: 18px;
+}
+.nav-link:hover{
+  color: white;
+}
+.cuerpo{
+  height: 600px;
+  padding: 50px;
+}
+#Redsocial{
+  width: 20px;
+}
+.footer{
+  background-color: lightgray;
+}

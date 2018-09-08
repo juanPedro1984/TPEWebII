@@ -1,0 +1,12 @@
+Aventura:
+	Beyond two souls.
+	God of War.
+	Shadow of Colossus.
+Accion:
+	GTA V.
+	Batman Archam City.
+	The evil Within.
+Terror:
+	Alien isolation.
+	Outlast.
+	Slenderman.
