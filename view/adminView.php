@@ -20,7 +20,9 @@ class adminView
         <ul class="nav justify-content-center">
           <li class="nav-item">
             <div class="dropdown">
-              <a href=""> <button class="dropbtn" class="nav-link" >HOME</button></a>
+              <form class="" action="" method="get">
+                <button class="submit" class="nav-link" >HOME</button>
+              </form>
             </div>
           </li>
       </ul>
@@ -31,25 +33,19 @@ class adminView
 
       <div class="container">
         <div class="formulario">
-          <h1>Cargar Genero</h1>
-          <form class="formCarga" action="genero" method="post">
-            <input class="inputCarga" type="text" name="cargaGenero" value="" placeholder="ingrese genero del juego">
-            <button class="btn" type="submit" name="button">Cargar</button>
-            <button class="btn" type="submit" name="button"formaction="borrarGen"  >Borrar</button>
-          </form>
-        </div>
-        <div class="formulario">
           <h1>Cargar Datos</h1>
           <form class="formCarga" action="agregar" method="post">
             <input class="inputCarga" type="text" name="cargaConsola" value="" placeholder="ingrese tipo de consola">
             <input class="inputCarga" type="text" name="cargaTitulo" value="" placeholder="ingrese titulo del juego">
+            <p>Seleccione Genero
             <select class=inputCarga"" name="selectGen">
               <option value="1">Terror</option>
               <option value="2">Accion</option>
               <option value="3">Aventura</option>
             </select>
+          </p>
             <input class="inputCarga" type="number" name="cargaPrecio" value="" placeholder="ingrese precio del juego">
-            <textarea name="cargaDescripcion" rows="8" cols="40" placeholder="ingrese breve descripcion"></textarea>
+            <textarea name="cargaDescripcion" rows="4" cols="40" placeholder="ingrese breve descripcion"></textarea>
             <button class="btn" type="submit" name="button">cargar</button>
           </form>
         </div>
@@ -68,7 +64,23 @@ class adminView
             <input class="inputCarga" type="text" name="editGenero" value="" placeholder="ingrese genero del juego">
             <input class="inputCarga" type="text" name="editTitulo" value="" placeholder="ingrese titulo del juego">
             <input class="inputCarga" type="number" name="editPrecio" value="" placeholder="ingrese precio del juego">
-            <textarea name="editDescripcion" rows="8" cols="40" placeholder="ingrese breve descripcion"></textarea>
+            <textarea name="editDescripcion" rows="4" cols="40" placeholder="ingrese breve descripcion"></textarea>
+            <button class="btn" type="submit" name="button">Editar</button>
+          </form>
+        </div>
+        <div class="formulario">
+          <h1>Cargar Genero</h1>
+          <form class="formCarga" action="genero" method="post">
+            <input class="inputCarga" type="text" name="cargaGenero" value="" placeholder="ingrese genero del juego">
+            <button class="btn" type="submit" name="button">Cargar</button>
+            <button class="btn" type="submit" name="button"formaction="borrarGen"  >Borrar</button>
+          </form>
+        </div>
+        <div class="formulario">
+          <h1>Editar Genero</h1>
+          <form class="formCarga" action="editGen" method="post">
+            <input type="number" name="id_gen" value="" placeholder="ingrese id a modificar">
+            <input class="inputCarga" type="text" name="editGen" value="" placeholder="ingrese genero del juego">
             <button class="btn" type="submit" name="button">Editar</button>
           </form>
         </div>
@@ -76,14 +88,14 @@ class adminView
               <h2>Lista de Items</h2>
           <?php
           echo "<ul class='tabla'>";
-          foreach ($juegos as $juego) {
-            echo   "<li> Id:".$juego['id_Juego'].", Consola: ".$juego['Consola'].", Titulo: ".$juego['Titulo'].",Genero: ".$juego['id_Genero']." Descripcion: ".$juego['Descripcion'].", Precio ".$juego['Precio']."</li>";
+          foreach ($generos as $genero) {
+            echo   "<li>Id:".$genero['id_Genero']." | Genero:".$genero['Genero']."</li>";
           }
           echo "</ul>";
 
           echo "<ul class='tabla'>";
-          foreach ($generos as $genero) {
-            echo   "<li> Genero:".$genero['Genero']."</li>";
+          foreach ($juegos as $juego) {
+            echo   "<li> Id:".$juego['id_Juego']." | Consola: ".$juego['Consola']." | Titulo: ".$juego['Titulo']." | Genero: ".$juego['id_Genero']." | Descripcion: ".$juego['Descripcion']." | Precio ".$juego['Precio']."</li>";
           }
           echo "</ul>";
            ?>

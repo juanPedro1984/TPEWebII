@@ -5,7 +5,7 @@ require_once 'controller/adminController.php';
 $controller = new adminController();
 
     if($_GET['action'] == ''){
-    home();
+    $controller->Home();
   }
     if($_GET['action'] == 'administrador') {
       $controller->Admin();
@@ -24,7 +24,10 @@ $controller = new adminController();
   }
     if ($_GET['action'] == 'borrarGen'){
       $controller->BorrarGenero();
-    }
+  }
+    if($_GET['action'] == 'editGen'){
+      $controller->EditarGenero();
+  }
 
 
 

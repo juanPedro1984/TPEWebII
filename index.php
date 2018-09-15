@@ -1,6 +1,11 @@
 <?php
+/**
+ *
+ */
+class index
+{
 
-function home()
+function Home()
 {
   $titulo = "DigitalGames";
 
@@ -67,5 +72,6 @@ Generalmente, los videojuegos hacen uso de otras maneras, aparte de la imagen, d
 </html>
 
 <?php
+}
 }
  ?>

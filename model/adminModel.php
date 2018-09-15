@@ -67,6 +67,14 @@ class adminModel
     $sentencia -> execute(array($genero));
     header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
 }
+  function EditarGenero()
+  {
+    $id_Genero=$_POST['id_gen'];
+    $genero=$_POST['editGen'];
+    $sentencia = $this->db->prepare("update genero set Genero=? where id_Genero=?");
+    $sentencia->execute(array($genero,$id_Genero));
+    header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
+    }
 }
 
  ?>
