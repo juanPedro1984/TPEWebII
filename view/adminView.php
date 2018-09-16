@@ -1,5 +1,4 @@
 <?php
-
 class adminView
 {
 
@@ -20,7 +19,7 @@ class adminView
         <ul class="nav justify-content-center">
           <li class="nav-item">
             <div class="dropdown">
-              <form class="" action="" method="get">
+              <form class="" action=" " method="get">
                 <button class="submit" class="nav-link" >HOME</button>
               </form>
             </div>
@@ -39,9 +38,11 @@ class adminView
             <input class="inputCarga" type="text" name="cargaTitulo" value="" placeholder="ingrese titulo del juego">
             <p>Seleccione Genero
             <select class=inputCarga"" name="selectGen">
-              <option value="1">Terror</option>
-              <option value="2">Accion</option>
-              <option value="3">Aventura</option>
+              <?php
+              foreach ($generos as $genero){
+                  echo  "<option value=".$genero['id_Genero'].">".$genero['Genero']."</option>";
+                }
+               ?>
             </select>
           </p>
             <input class="inputCarga" type="number" name="cargaPrecio" value="" placeholder="ingrese precio del juego">
