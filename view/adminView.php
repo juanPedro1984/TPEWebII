@@ -19,7 +19,7 @@ class adminView
         <ul class="nav justify-content-center">
           <li class="nav-item">
             <div class="dropdown">
-              <form class="" action=" " method="get">
+              <form class="" action="" method="get">
                 <button class="submit" class="nav-link" >HOME</button>
               </form>
             </div>
@@ -33,11 +33,11 @@ class adminView
       <div class="container">
         <div class="formulario">
           <h1>Cargar Datos</h1>
-          <form class="formCarga" action="agregar" method="post">
+          <form class="formCarga" action="agregar" method="get">
             <input class="inputCarga" type="text" name="cargaConsola" value="" placeholder="ingrese tipo de consola">
             <input class="inputCarga" type="text" name="cargaTitulo" value="" placeholder="ingrese titulo del juego">
             <p>Seleccione Genero
-            <select class=inputCarga"" name="selectGen">
+            <select class="inputCarga" name="selectGen">
               <?php
               foreach ($generos as $genero){
                   echo  "<option value=".$genero['id_Genero'].">".$genero['Genero']."</option>";
@@ -52,14 +52,14 @@ class adminView
         </div>
         <div class="formulario">
           <h1>Borrar Datos</h1>
-          <form class="formBorrar" action="borrar" method="post">
+          <form class="formBorrar" action="borrar" method="get">
             <input  class="inputCarga" type="text" name="idBorrar" value="" placeholder="ingrese Id">
             <button class="btn" type="submit" name="button">Borrar</button>
           </form>
         </div>
         <div class="formulario">
           <h1>Editar Datos</h1>
-          <form class="formCarga" action="editar" method="post">
+          <form class="formCarga" action="editar" method="get">
             <input  class="inputCarga" type="text" name="idEditar" value="" placeholder="ingrese Id">
             <input class="inputCarga" type="text" name="editConsola" value="" placeholder="ingrese tipo de consola">
             <input class="inputCarga" type="text" name="editGenero" value="" placeholder="ingrese genero del juego">
@@ -71,16 +71,16 @@ class adminView
         </div>
         <div class="formulario">
           <h1>Cargar Genero</h1>
-          <form class="formCarga" action="genero" method="post">
+          <form class="formCarga" action="genero" method="get">
             <input class="inputCarga" type="text" name="cargaGenero" value="" placeholder="ingrese genero del juego">
             <button class="btn" type="submit" name="button">Cargar</button>
-            <button class="btn" type="submit" name="button"formaction="borrarGen"  >Borrar</button>
+            <button class="btn" type="submit" name="button"formaction="borrarGen">Borrar</button>
           </form>
         </div>
         <div class="formulario">
           <h1>Editar Genero</h1>
-          <form class="formCarga" action="editGen" method="post">
-            <input type="number" name="id_gen" value="" placeholder="ingrese id a modificar">
+          <form class="formCarga" action="editGen" method="get">
+            <input class="inputCarga" type="number" name="id_gen" value="" placeholder="ingrese id a modificar">
             <input class="inputCarga" type="text" name="editGen" value="" placeholder="ingrese genero del juego">
             <button class="btn" type="submit" name="button">Editar</button>
           </form>
@@ -118,6 +118,7 @@ class adminView
     </body>
     </html>
     <?php
+
     }
 
   }

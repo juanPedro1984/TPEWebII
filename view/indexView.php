@@ -1,11 +1,9 @@
 <?php
-/**
- *
- */
-class index
+
+class indexView
 {
 
-function Home()
+function Home($juegos,$generos)
 {
   $titulo = "DigitalGames";
 
@@ -46,6 +44,7 @@ function Home()
    <li>Documento: <input id="input" type="number" name="Documento" /></li>
    <li>Contraseña: <input type="text" name="Contraseña" /></li>
    <li><input type="submit" value="Sign in" ></li>
+ </form>
  </div>
 </div>
 </li>
@@ -55,6 +54,28 @@ function Home()
   <p> Un videojuego o juego de video es un juego electrónico en el que una o más personas interactúan, por medio de un controlador, con un dispositivo que muestra imágenes de video.1​ Este dispositivo electrónico, conocido genéricamente como «plataforma», puede ser una computadora, una máquina arcade, una videoconsola o un dispositivo portátil (un teléfono móvil, por ejemplo). Los videojuegos son, año por año, una de las principales industrias del arte y el entretenimiento.
 Al dispositivo de entrada usado para manipular un videojuego se lo conoce como controlador de videojuego, o mando, y varía dependiendo de la plataforma. Por ejemplo, un controlador podría únicamente consistir de un botón y una palanca de mando o joystick, mientras otro podría presentar una docena de botones y una o más palancas (mando). Los primeros juegos informáticos solían hacer uso de un teclado para llevar a cabo la interacción, o bien requerían que el usuario adquiriera un joystick con un botón como mínimo.2​ Muchos juegos de computadora modernos permiten o exigen que el usuario utilice un teclado y un ratón de forma simultánea. Entre los controladores más típicos están los gamepads, joysticks, teclados, ratones y pantallas táctiles.
 Generalmente, los videojuegos hacen uso de otras maneras, aparte de la imagen, de proveer la interactividad e información al jugador. El audio es casi universal, usándose dispositivos de reproducción de sonido, tales como altavoces y auriculares. Otro tipo de realimentación se hace a través de periféricos hápticos que producen vibración o retroalimentación de fuerza, usándose a veces la vibración para simular la retroalimentación de fuerza. </p>
+
+<h3>Filtrar por genero</h3>
+<form class="" action="filGen" method="post">
+<select class="inputCarga" name="">
+  <?php
+  foreach ($generos as $genero){
+      echo  "<option value=".$genero['id_Genero'].">".$genero['Genero']."</option>";
+    }
+   ?>
+</select>
+<button type="submit" name="button">Filtrar</button>
+</form>
+<h1>Lista de items</h1><h1></h1>
+<?php
+echo "<ul class='tabla'>";
+foreach ($juegos as $juego) {
+  echo   "<li> Consola: ".$juego['Consola']." | Titulo: ".$juego['Titulo']."</li>";
+}
+echo "</ul>";
+
+?>
+
 
 </div>
 <div class="footer">

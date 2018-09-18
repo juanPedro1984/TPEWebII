@@ -1,7 +1,7 @@
 <?php
 require_once './view/adminView.php';
 require_once './model/adminModel.php';
-require_once './index.php';
+require_once './view/indexView.php';
 
 class adminController{
   private $view;
@@ -13,12 +13,14 @@ class adminController{
     $this->view = new adminView();
     $this->titulo = "DigitalGames";
     $this->model = new adminModel();
-    $this->index = new index();
+    $this->index = new indexView();
   }
 
-  function Home()
+  function HomeController()
   {
-    $this->index->Home();
+    $juegos = $this->model->GetTareas();
+    $generos = $this->model->GetGeneros();
+    $this->index->Home($juegos,$generos);
   }
 
   function Admin(){
@@ -26,7 +28,9 @@ class adminController{
     $generos = $this->model->GetGeneros();
     $this->view->Mostrar($this->titulo,$juegos,$generos);
   }
-
+  function FiltroGen(){
+    $this->model->FiltroGen();
+  }
   function InsertJuego(){
     $this->model->InsertJuego();
   }

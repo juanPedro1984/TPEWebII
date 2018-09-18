@@ -1,33 +1,37 @@
 <?php
-require_once 'index.php';
+require_once 'view/indexView.php';
 require_once 'controller/adminController.php';
 
 $controller = new adminController();
 
-    if($_GET['action'] == ''){
-    $controller->Home();
-  }
-    if($_GET['action'] == 'administrador') {
+    if($_GET['action'] == ""){
+    $controller->HomeController();
+
+  }else{
+      $partesURL = explode ("/",$_GET['action']);
+
+    if($partesURL[0] === 'administrador') {
       $controller->Admin();
   }
-    if($_GET['action'] == 'agregar'){
+    elseif($partesURL[0] === 'agregar'){
     $controller->InsertJuego();
   }
-    if($_GET['action'] == 'borrar'){
+    elseif($partesURL[0] == 'borrar'){
     $controller->BorrarJuego();
   }
-    if($_GET['action'] == 'editar'){
+    elseif($partesURL[0] == 'editar'){
     $controller->EditarJuego();
   }
-    if ($_GET['action'] == 'genero'){
+    elseif ($partesURL[0] == 'genero'){
     $controller->InsertGenero();
   }
-    if ($_GET['action'] == 'borrarGen'){
+    elseif ($partesURL[0] == 'borrarGen'){
       $controller->BorrarGenero();
   }
-    if($_GET['action'] == 'editGen'){
+    elseif($partesURL[0] == 'editGen'){
       $controller->EditarGenero();
   }
+}
 
 
 
