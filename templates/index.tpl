@@ -30,10 +30,12 @@
    <div class="dropdown">
  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sign In</i> </button>
  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   <form action="administrador" method="post">
+   <form action="signIn" method="post">
    <li>Documento: <input id="input" type="number" name="Documento" /></li>
    <li>Contraseña: <input type="text" name="Contraseña" /></li>
    <li><input type="submit" value="Sign in" ></li>
+   <li>¿No estas registrado</li>
+   <li><input type="submit" value="Sign up"formaction="register" ></li>
  </form>
  </div>
 </div>

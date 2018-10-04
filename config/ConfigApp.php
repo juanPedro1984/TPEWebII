@@ -5,13 +5,18 @@ class ConfigApp{
   public static $PARAMS = "params";
   public static $ACTIONS = [
       ''=>'adminController#HomeController',
-      'administrador'=>'adminController#Admin',
+      'home'=>'adminController#HomeController',
+      'signIn'=>'adminController#verifyUser',
       'agregar'=>'adminController#InsertJuego',
       'borrar'=>'adminController#BorrarJuego',
       'editar'=>'adminController#EditarJuego',
       'genero'=>'adminController#InsertGenero',
       'borrarGen'=>'adminController#BorrarGenero',
       'editGen'=>'adminController#EditarGenero',
+      'register'=>'adminController#signUp',
+      'cargarRegistro'=>'adminController#cargarRegistro',
+      'administrador'=>'adminController#admin'
+
   ];
 }
 

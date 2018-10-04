@@ -9,17 +9,7 @@
 </head>
 <body>
 
-<div class="Navegador">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <div class="dropdown">
-          <form class="" action="" method="get">
-            <button class="submit" class="nav-link" >HOME</button>
-          </form>
-        </div>
-      </li>
-  </ul>
-</div>
+{include file = 'header1.tpl'}
 
 
 <div class="cuerpo">
@@ -81,7 +71,7 @@
     </div>
         <div class="lista">
           <h2>Lista de Items</h2>
-      <ul class='tabla'>";
+      <ul class='tabla'>
       {foreach from=$generos item=genero}
         <li>Id:{$genero['id_Genero']} | Genero: {$genero['Genero']}</li>
       {/foreach}

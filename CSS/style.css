@@ -2,6 +2,7 @@ html{
   font-family:sans-serif;
   background-color: lightgrey;
 }
+
 .Navegador{
   border-bottom: 7px solid orange;
   background-color: grey;
@@ -49,4 +50,12 @@ html{
 }
 .tabla{
   border: solid 1px black;
+}
+.formRegistro{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: solid 1px black;
+  height: 200px;
+  width: 310px;
 }

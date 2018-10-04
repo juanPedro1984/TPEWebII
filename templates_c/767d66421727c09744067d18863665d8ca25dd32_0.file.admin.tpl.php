@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-29 04:16:26
+/* Smarty version 3.1.33, created on 2018-10-04 04:08:22
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5baee07a4b8682_03304585',
+  'unifunc' => 'content_5bb5761683bc18_62988329',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '767d66421727c09744067d18863665d8ca25dd32' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\admin.tpl',
-      1 => 1538187375,
+      1 => 1538617783,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:header1.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5baee07a4b8682_03304585 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bb5761683bc18_62988329 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,17 +35,8 @@ function content_5baee07a4b8682_03304585 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 <body>
 
-<div class="Navegador">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <div class="dropdown">
-          <form class="" action="" method="get">
-            <button class="submit" class="nav-link" >HOME</button>
-          </form>
-        </div>
-      </li>
-  </ul>
-</div>
+<?php $_smarty_tpl->_subTemplateRender('file:header1.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 
 <div class="cuerpo">
@@ -115,7 +107,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </div>
         <div class="lista">
           <h2>Lista de Items</h2>
-      <ul class='tabla'>";
+      <ul class='tabla'>
       <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
 if ($_from !== null) {

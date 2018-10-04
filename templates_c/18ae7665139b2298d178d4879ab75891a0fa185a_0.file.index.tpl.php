@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-29 04:16:35
+/* Smarty version 3.1.33, created on 2018-10-04 20:31:15
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5baee083304e47_53369391',
+  'unifunc' => 'content_5bb65c7379ccf0_13189227',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18ae7665139b2298d178d4879ab75891a0fa185a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\index.tpl',
-      1 => 1538187364,
+      1 => 1538677837,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5baee083304e47_53369391 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bb65c7379ccf0_13189227 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -54,10 +54,12 @@ function content_5baee083304e47_53369391 (Smarty_Internal_Template $_smarty_tpl)
    <div class="dropdown">
  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sign In</i> </button>
  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   <form action="administrador" method="post">
+   <form action="signIn" method="post">
    <li>Documento: <input id="input" type="number" name="Documento" /></li>
    <li>Contraseña: <input type="text" name="Contraseña" /></li>
    <li><input type="submit" value="Sign in" ></li>
+   <li>¿No estas registrado</li>
+   <li><input type="submit" value="Sign up"formaction="register" ></li>
  </form>
  </div>
 </div>
