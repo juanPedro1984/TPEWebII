@@ -12,7 +12,8 @@ class adminController{
   private $index;
   private $userMod;
   private $registerView;
-
+  private $arrCat;
+  private $categoria;
 
   function __construct()  {
     $this->view = new adminView();
@@ -21,13 +22,22 @@ class adminController{
     $this->registerView = new registerView();
     $this->userMod = new userModel();
     $this->adminModel = new adminModel();
+
   }
 
-  function HomeController()
-  {
+  function HomeController(){
+    if(isset($_POST['seleccionarGen'])){
+      $this->categoria = $_POST['seleccionarGen'];
+      $this->arrCat=$this->userMod->FiltroGen($this->categoria);
+      $juegos = $this->adminModel->GetTareas();
+      $generos = $this->adminModel->GetGeneros();
+      $this->index->Home($this->arrCat,$juegos,$generos);
+    }
+  else{
     $juegos = $this->adminModel->GetTareas();
     $generos = $this->adminModel->GetGeneros();
-    $this->index->Home($juegos,$generos);
+    $this->index->Home($this->arrCat,$juegos,$generos);
+    }
   }
 
   function Admin(){
@@ -35,9 +45,7 @@ class adminController{
     $generos = $this->adminModel->GetGeneros();
     $this->view->Mostrar($this->titulo,$juegos,$generos);
   }
-  function FiltroGen(){
-    $this->adminModel->FiltroGen();
-  }
+
   function InsertJuego(){
     $this->adminModel->InsertJuego();
   }
@@ -49,12 +57,15 @@ class adminController{
   function EditarJuego(){
     $this->adminModel->EditarJuego();
   }
+
   function BorrarGenero(){
     $this->adminModel->BorrarGenero();
   }
+
   function InsertGenero(){
     $this->adminModel->InsertGenero();
   }
+
   function EditarGenero(){
     $this->adminModel->EditarGenero();
   }
@@ -76,21 +87,20 @@ class adminController{
         $this->view->Mostrar($this->titulo,$juegos,$generos);
       }else {
         echo "contraseña incorrecta";
-        }
+      }
       }else{
         echo "usuario no existe";
       }
-    }
+  }
 
   function cargarRegistro(){
     if ((!empty($_POST['ingresarUsuario']))&&(!empty($_POST['ingresarPassword']))) {
     $this->userMod->CargarUsuario();
-    }else{
+      }else{
     header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/register");
+      }
     }
   }
-
-}
 
 
 

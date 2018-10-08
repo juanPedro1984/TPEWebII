@@ -15,8 +15,8 @@ class ConfigApp{
       'editGen'=>'adminController#EditarGenero',
       'register'=>'adminController#signUp',
       'cargarRegistro'=>'adminController#cargarRegistro',
-      'administrador'=>'adminController#admin'
-
+      'administrador'=>'adminController#admin',
+      'filtrar'=>'adminController#HomeController'
   ];
 }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-29 04:16:26
+/* Smarty version 3.1.33, created on 2018-10-07 02:03:12
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5baee07a512414_57376202',
+  'unifunc' => 'content_5bb94d40102c17_45828532',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14f708790039da3ad385d879ba1228f8844128f6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\footer.tpl',
-      1 => 1538187246,
+      1 => 1538869811,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5baee07a512414_57376202 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bb94d40102c17_45828532 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="footer">
 <nav class="nav nav-pills nav-fill">
   <p class="nav-item nav-link">Siguenos en nuestras redes sociales: </p>

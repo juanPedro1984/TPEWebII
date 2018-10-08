@@ -11,6 +11,7 @@ class adminModel
   }
 
 
+
   function GetTareas()  {
     $sentencia= $this->db->prepare("select* from juegos");
     $sentencia->execute();
@@ -73,6 +74,8 @@ class adminModel
     $sentencia->execute(array($genero,$id_Genero));
     header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
     }
+
+
 }
 
  ?>

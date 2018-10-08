@@ -1,5 +1,0 @@
-esta el routeo para los diferentes submit.
-formularios para crear, borrar, editar juegos, y cargar y borrar genero.
-las tablas estan relacionadas (pero no termino de entender como funciona
-para traer todo lo del mismo genero).
-la base de datos tiene la estructura pero no tiene datos cargados.

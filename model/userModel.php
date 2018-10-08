@@ -26,6 +26,11 @@ class userModel
     $sentencia->execute (array($user,$pass));
     header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
   }
+  function FiltroGen($categoria){
+    $sentencia= $this->db->prepare("select * from juegos where  id_Genero = ?");
+    $sentencia->execute(array($categoria));
+    return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 
 
