@@ -76,18 +76,12 @@
       </form>
     </div>
         <div class="lista">
-          <h2 class="items">Lista de Items</h2>
-      <ul class='tabla'>
-      {foreach from=$generos item=genero}
-        <li>Id:{$genero['id_Genero']} | Genero: {$genero['Genero']}</li>
-      {/foreach}
-      </ul>
+          {if $categorias !== null}
+            {include file="generosAdmin.tpl"}
+            {else}
+            {include file="listaItems.tpl"}
+            {/if}
 
-      <ul class='tabla'>
-      {foreach from=$juegos item=juego}
-        <li> Id: {$juego['id_Juego']}<h4>Titulo: {$juego['Titulo']}</h4><hr> Consola: {$juego['Consola']} <br> Genero: {$juego['id_Genero']} <br> Descripcion: {$juego['Descripcion']} <br> Precio {$juego['Precio']}<br><hr></li>
-        {/foreach}
-      </ul>
     </div>
   </div>
 

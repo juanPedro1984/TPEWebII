@@ -9,11 +9,12 @@
 <li class="nav-item">
   <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  {foreach from=$generos item=genero}
-    <a class="dropdown-item" href="filGen" value={$genero['id_Genero']} >{$genero['Genero']}</a>
-  {/foreach}
-</div>
+  <form action="filtrarAdmin" method="post" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <button type="submit" class="dropdown-item" formaction="administrador" >Todos los juegos</button>
+    {foreach from=$generos item=genero}
+      <button type="submit" class="dropdown-item" name="seleccionarGenAdmin" value="{$genero['id_Genero']}" >{$genero['Genero']}</button>
+    {/foreach}
+  </form>
 </div>
 </li>
 </ul>

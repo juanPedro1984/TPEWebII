@@ -16,7 +16,8 @@ class ConfigApp{
       'register'=>'adminController#signUp',
       'cargarRegistro'=>'adminController#cargarRegistro',
       'administrador'=>'adminController#admin',
-      'filtrar'=>'adminController#HomeController'
+      'filtrar'=>'adminController#HomeController',
+      'filtrarAdmin'=>'adminController#Admin'
   ];
 }
 

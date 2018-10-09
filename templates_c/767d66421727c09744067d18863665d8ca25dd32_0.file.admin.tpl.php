@@ -1,28 +1,30 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-07 22:30:11
+/* Smarty version 3.1.33, created on 2018-10-09 14:06:20
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bba6cd340a555_09896195',
+  'unifunc' => 'content_5bbc99bc260128_21597298',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '767d66421727c09744067d18863665d8ca25dd32' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\admin.tpl',
-      1 => 1538944210,
+      1 => 1539086775,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:navAdmin.tpl' => 1,
+    'file:generosAdmin.tpl' => 1,
+    'file:listaItems.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bba6cd340a555_09896195 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bbc99bc260128_21597298 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,40 +123,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       </form>
     </div>
         <div class="lista">
-          <h2 class="items">Lista de Items</h2>
-      <ul class='tabla'>
-      <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['genero']->value) {
+          <?php if ($_smarty_tpl->tpl_vars['categorias']->value !== null) {?>
+            <?php $_smarty_tpl->_subTemplateRender("file:generosAdmin.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-        <li>Id:<?php echo $_smarty_tpl->tpl_vars['genero']->value['id_Genero'];?>
- | Genero: <?php echo $_smarty_tpl->tpl_vars['genero']->value['Genero'];?>
-</li>
-      <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-      </ul>
+            <?php } else { ?>
+            <?php $_smarty_tpl->_subTemplateRender("file:listaItems.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+            <?php }?>
 
-      <ul class='tabla'>
-      <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['juegos']->value, 'juego');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
-?>
-        <li> Id: <?php echo $_smarty_tpl->tpl_vars['juego']->value['id_Juego'];?>
-<h4>Titulo: <?php echo $_smarty_tpl->tpl_vars['juego']->value['Titulo'];?>
-</h4><hr> Consola: <?php echo $_smarty_tpl->tpl_vars['juego']->value['Consola'];?>
- <br> Genero: <?php echo $_smarty_tpl->tpl_vars['juego']->value['id_Genero'];?>
- <br> Descripcion: <?php echo $_smarty_tpl->tpl_vars['juego']->value['Descripcion'];?>
- <br> Precio <?php echo $_smarty_tpl->tpl_vars['juego']->value['Precio'];?>
-<br><hr></li>
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-      </ul>
     </div>
   </div>
 

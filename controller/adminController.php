@@ -41,9 +41,18 @@ class adminController{
   }
 
   function Admin(){
+    if(isset($_POST['seleccionarGenAdmin'])){
+      $this->categoria = $_POST['seleccionarGenAdmin'];
+      $this->arrCat=$this->userMod->FiltroGen($this->categoria);
+      $juegos = $this->adminModel->GetTareas();
+      $generos = $this->adminModel->GetGeneros();
+      $this->view->Mostrar($this->arrCat,$this->titulo,$juegos,$generos);
+    }
+  else{
     $juegos = $this->adminModel->GetTareas();
     $generos = $this->adminModel->GetGeneros();
-    $this->view->Mostrar($this->titulo,$juegos,$generos);
+    $this->view->Mostrar($this->arrCat,$this->titulo,$juegos,$generos);
+    }
   }
 
   function InsertJuego(){
@@ -71,9 +80,13 @@ class adminController{
   }
 
   //userModel
+//    $juegos = $this->adminModel->GetTareas();
+  //  $generos = $this->adminModel->GetGeneros();
+    //$this->view->Mostrar($this->titulo,$juegos,$generos);
 
   function signUp(){
-    $this->registerView->register();
+    $message="";
+    $this->registerView->register($message);
   }
 
   function verifyUser(){
@@ -86,7 +99,7 @@ class adminController{
         $generos = $this->adminModel->GetGeneros();
         $this->view->Mostrar($this->titulo,$juegos,$generos);
       }else {
-        echo "contraseña incorrecta";
+        header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]));
       }
       }else{
         echo "usuario no existe";
@@ -94,10 +107,20 @@ class adminController{
   }
 
   function cargarRegistro(){
-    if ((!empty($_POST['ingresarUsuario']))&&(!empty($_POST['ingresarPassword']))) {
-    $this->userMod->CargarUsuario();
+    $user = $_POST['ingresarUsuario'];
+    $pass =$_POST['ingresarPassword'];
+    $rePass =$_POST['repetirPassword'];
+    $error_message ="";
+    if((!empty($user))&&(!empty($pass))&&(!empty($rePass)) ) {
+        if($pass == $rePass){
+          $this->userMod->CargarUsuario($user,$pass);
       }else{
-    header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/register");
+        $error_message = "Las contraseñas no coinciden. Por favor, inténtelo de nuevo.";
+        $this->registerView->register($error_message);
+      }}
+      else{
+        $error_message = "Algunos campos estan incompletos. Por favor, inténtelo de nuevo.";
+        $this->registerView->register($error_message);
       }
     }
   }

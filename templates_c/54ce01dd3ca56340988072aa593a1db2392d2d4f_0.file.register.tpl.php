@@ -1,28 +1,28 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-07 21:51:01
+/* Smarty version 3.1.33, created on 2018-10-09 00:30:23
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bba63a57603e7_70203827',
+  'unifunc' => 'content_5bbbda7ff2c593_44869435',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '54ce01dd3ca56340988072aa593a1db2392d2d4f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\register.tpl',
-      1 => 1538941818,
+      1 => 1539037821,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:navAdmin.tpl' => 1,
+    'file:navRegister.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bba63a57603e7_70203827 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bbbda7ff2c593_44869435 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -32,17 +32,31 @@ function content_5bba63a57603e7_70203827 (Smarty_Internal_Template $_smarty_tpl)
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-  <?php $_smarty_tpl->_subTemplateRender('file:navAdmin.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+  <?php $_smarty_tpl->_subTemplateRender('file:navRegister.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="cuerpo">
+  <h3>Formulario de registro</h3>
   <form class="formRegistro" action="cargarRegistro" method="post">
-    <h2>Registro de Usuario</h2>
-    <input class="inputCarga" type="text" name="ingresarUsuario" value="" placeholder="ingrese documento">
-    <input class="inputCarga" type="text" name="ingresarPassword" value="" placeholder="ingrese contraseña">
-    <input  class="btn" type="submit" name="cargarUsuario" value="Registrarse">
+    <div class="form-group">
+      <label class="label" for="exampleInputEmail1">Documento</label>
+      <input type="text" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Ingrese Documento">
+      <small id="emailHelp" class="form-text text-muted">Registrese con su DNI</small>
+    </div>
+    <div class="form-group">
+      <label class="label" for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="ingresarPassword" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label class="label" for="exampleInputPassword1">Repita su Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="repetirPassword" placeholder="Repita su Password">
+      <small id="emailHelp" class="form-text text-muted"><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
+</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrarse</button>
   </form>
+
 </div>
-<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+  <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 </body>
 </html>

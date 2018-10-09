@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-07 20:53:49
+/* Smarty version 3.1.33, created on 2018-10-09 15:17:41
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\generos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bba563da58d65_43747851',
+  'unifunc' => 'content_5bbcaa75561187_62182420',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ac8a98bc6e3687638e3df719311a1db65058c86' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\generos.tpl',
-      1 => 1538938420,
+      1 => 1539086196,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bba563da58d65_43747851 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bbcaa75561187_62182420 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2>Lista de Items</h2>
-
 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categorias']->value, 'categoria');
 if ($_from !== null) {
