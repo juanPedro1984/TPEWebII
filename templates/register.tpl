@@ -12,17 +12,17 @@
   <h3>Formulario de registro</h3>
   <form class="formRegistro" action="cargarRegistro" method="post">
     <div class="form-group">
-      <label class="label" for="exampleInputEmail1">Documento</label>
-      <input type="text" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Ingrese Documento">
+      <label class="label" for="exampleInputEmail1">Ingrese su email</label>
+      <input type="text" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Email">
       <small id="emailHelp" class="form-text text-muted">Registrese con su DNI</small>
     </div>
     <div class="form-group">
-      <label class="label" for="exampleInputPassword1">Password</label>
+      <label class="label" for="exampleInputPassword1">Ingrese una contraseña</label>
       <input type="password" class="form-control" id="exampleInputPassword1" name="ingresarPassword" placeholder="Password">
     </div>
     <div class="form-group">
-      <label class="label" for="exampleInputPassword1">Repita su Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" name="repetirPassword" placeholder="Repita su Password">
+      <label class="label" for="exampleInputPassword1">Repita su contraseña</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="repetirPassword">
       <small id="emailHelp" class="form-text text-muted">{$error}</small>
     </div>
     <button type="submit" class="btn btn-primary">Registrarse</button>

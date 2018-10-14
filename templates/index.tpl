@@ -17,6 +17,8 @@
 
       {if $categorias !== null}
         {include file="generos.tpl"}
+        {elseif $getAll !== null}
+        {include file="todosLosJuegos.tpl"}
         {else}
         {include file="text.tpl"}
         {/if}

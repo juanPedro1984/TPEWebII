@@ -5,6 +5,8 @@ define('PARAMS', 1);
 
 require_once 'config/ConfigApp.php';
 require_once 'controller/adminController.php';
+require_once 'controller/homeController.php';
+require_once 'controller/signUpController.php';
 
 function parseUrl($url){
   $arr_data = explode ("/",$url);
@@ -19,7 +21,7 @@ if (array_key_exists($action,ConfigApp::$ACTIONS)){
     $params = $urlData[ConfigApp::$PARAMS];
     $action = explode('#',ConfigApp::$ACTIONS[$action]);
     $controller = new $action[0]();
-    $metodo = $action [1];
+    $metodo = $action[1];
   }
 if(isset($params) && $params != null){
       echo $controller->$metodo($params);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-07 21:50:42
+/* Smarty version 3.1.33, created on 2018-10-14 21:01:16
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bba6392020549_20280123',
+  'unifunc' => 'content_5bc3927cc86600_99014832',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18ae7665139b2298d178d4879ab75891a0fa185a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\index.tpl',
-      1 => 1538941753,
+      1 => 1539543670,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:navHome.tpl' => 1,
     'file:generos.tpl' => 1,
+    'file:todosLosJuegos.tpl' => 1,
     'file:text.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bba6392020549_20280123 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bc3927cc86600_99014832 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,6 +46,9 @@ function content_5bba6392020549_20280123 (Smarty_Internal_Template $_smarty_tpl)
 
       <?php if ($_smarty_tpl->tpl_vars['categorias']->value !== null) {?>
         <?php $_smarty_tpl->_subTemplateRender("file:generos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+        <?php } elseif ($_smarty_tpl->tpl_vars['getAll']->value !== null) {?>
+        <?php $_smarty_tpl->_subTemplateRender("file:todosLosJuegos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         <?php } else { ?>
         <?php $_smarty_tpl->_subTemplateRender("file:text.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

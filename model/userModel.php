@@ -1,4 +1,5 @@
 <?php
+
 require_once './view/registerView.php';
 
 class userModel
@@ -17,19 +18,16 @@ class userModel
     $sentencia= $this->db->prepare("select* from usuarios where Usuario = ?");
     $sentencia->execute(array($user));
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
   }
-  function CargarUsuario($user,$pass)
-  {
+
+  function CargarUsuario($user,$pass){
     $hash_pass=password_hash($pass, PASSWORD_DEFAULT);
     $sentencia= $this->db->prepare("INSERT INTO usuarios(Usuario,Password) VALUES (?,?)");
     $sentencia->execute (array($user,$hash_pass));
-    header("Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
-
   }
 
   function FiltroGen($categoria){
-    $sentencia= $this->db->prepare("select * from juegos where  id_Genero = ?");
+    $sentencia= $this->db->prepare("select juegos.*, genero.Genero from juegos, genero where  juegos.id_Genero = ? and juegos.id_Genero = genero.id_Genero");
     $sentencia->execute(array($categoria));
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }

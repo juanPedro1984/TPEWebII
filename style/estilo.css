@@ -46,10 +46,13 @@ html{
   margin: 8px;
 }
 .footer{
+  display: block;
   background-color: gray;
+  bottom: 0;
   font-size: 15px;
+  width: 98%;
   height: 60px;
-  margin: 10px;
+  margin:10px;
 }
 .formulario{
   display: inline-flex;
@@ -102,13 +105,45 @@ html{
 }
 .items{
   text-align: center;
+  margin: 10px;
 }
 .cuerpo{
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 .label{
   margin-left: 5px;
+}
+.btnDet{
+  width: auto;
+  background-color: inherit;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.signIn{
+  width: 300px;
+  padding: 10px;
+}
+.cuerpoDetalle{
+  margin: 30px 60px 20px 60px;
+}
+.descripcion{
+  margin: 30px 0 20px 0;
+  border: solid 1px lightgrey;
+  padding: 20px;
+  font-size: 20px;
+}
+.info{
+  display: inline-flex;
+}
+.infoGame{
+  margin-right:10px;
+}
+.infoTitulo{
+  text-align: center;
 }
