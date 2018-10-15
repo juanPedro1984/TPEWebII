@@ -1,4 +1,8 @@
 <?php
+define('ADMIN',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
+define('HOME',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]));
+define('REGISTER',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/register");
+
 class ConfigApp{
 
   public static $ACTION = "action";
@@ -18,7 +22,8 @@ class ConfigApp{
       'editGen'=>'adminController#EditarGenero',
       'cargarRegistro'=>'signUpController#cargarRegistro',
       'filtrar'=>'homeController#HomeController',
-      'filtrarAdmin'=>'adminController#Admin'
+      'filtrarAdmin'=>'adminController#Admin',
+      'logout'=>'securedController#logout'
   ];
 }
 

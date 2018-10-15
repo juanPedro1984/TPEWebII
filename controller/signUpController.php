@@ -23,7 +23,7 @@ class signUpController
     if((!empty($user))&&(!empty($pass))&&(!empty($rePass)) ) {
         if($pass == $rePass){
           $this->userMod->CargarUsuario($user,$pass);
-          header(ADMIN);
+          header(HOME);
           }else{
             $error_message = "Las contraseñas no coinciden. Por favor, inténtelo de nuevo.";
             $this->registerView->register($error_message);

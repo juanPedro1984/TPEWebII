@@ -7,6 +7,7 @@ class indexView
 
 function Home($categoria,$juegos,$generos,$detalle,$getAll)
 {
+  session_start();
   $smarty = new Smarty();
   $smarty->assign('getAll',$getAll);
   $smarty->assign('detalle',$detalle);

@@ -27,6 +27,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Registrarse</button>
   </form>
+  <small id="emailHelp" class="form-text text-muted">Una ves registrado ingrese como administrador desde home.</small>
 
 </div>
   {include file="footer.tpl"}

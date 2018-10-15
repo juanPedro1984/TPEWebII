@@ -7,6 +7,7 @@ require_once 'config/ConfigApp.php';
 require_once 'controller/adminController.php';
 require_once 'controller/homeController.php';
 require_once 'controller/signUpController.php';
+require_once 'controller/securedController.php';
 
 function parseUrl($url){
   $arr_data = explode ("/",$url);

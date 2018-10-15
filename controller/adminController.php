@@ -1,6 +1,5 @@
 <?php
-define('ADMIN',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/administrador");
-define('HOME',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]));
+
 
 require_once './view/adminView.php';
 require_once './model/adminModel.php';
@@ -8,8 +7,10 @@ require_once './view/indexView.php';
 require_once './model/userModel.php';
 require_once './view/registerView.php';
 require_once './model/generoModel.php';
+require_once 'securedController.php';
 
-class adminController{
+class adminController extends SecuredController
+{
   private $view;
   private $titulo;
   private $genModel;
@@ -20,7 +21,9 @@ class adminController{
   private $arrCat;
   private $categoria;
 
-  function __construct()  {
+  function __construct(){
+    parent::__construct();
+
     $this->view = new adminView();
     $this->titulo = "DigitalGames";
     $this->index = new indexView();

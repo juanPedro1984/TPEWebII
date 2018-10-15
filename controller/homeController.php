@@ -63,9 +63,9 @@ class homeController
     $userDb= $this->userMod->GetUsers($user);
     if (isset($userDb)) {
       if (password_verify($pass, $userDb[0]['Password'])){
+        session_start();
+        $_SESSION['User'] = $user;
         header(ADMIN);
-      }else {
-        header(HOME);
         }
       }else{
         echo "usuario no existe";
