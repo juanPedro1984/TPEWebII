@@ -11,7 +11,9 @@
 <body>
 {include file = 'navAdmin.tpl'}
 <div class="cuerpo">
-
+  {if isset($session_expired)}
+  {include file = "sessionExpired.tpl"}
+  {/if}
   <div class="contForm">
 
     <div class="formulario">

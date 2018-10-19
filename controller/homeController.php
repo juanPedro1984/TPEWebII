@@ -22,6 +22,7 @@ class homeController
   private $categoria;
   private $detalle;
   private $getAll;
+  private $session_expired;
 
 
   function __construct() {
@@ -36,19 +37,19 @@ class homeController
   function HomeController(){
     if(isset($_POST['seleccionarGen'])){
       $this->categoria = $_POST['seleccionarGen'];
-      $this->arrCat=$this->userMod->FiltroGen($this->categoria);
-      $juegos = $this->adminModel->GetTareas();
+      $this->arrCat=$this->genModel->FiltroGen($this->categoria);
+      $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
-      $this->index->Home($this->arrCat,$juegos,$generos,$this->detalle,$this->getAll);
+      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
     }elseif(isset($_POST['getAll'])){
       $this->getAll = $_POST['getAll'];
-      $juegos = $this->adminModel->GetTareas();
+      $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
-      $this->index->Home($this->arrCat,$juegos,$generos,$this->detalle,$this->getAll);
+      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
     }else{
-      $juegos = $this->adminModel->GetTareas();
+      $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
-      $this->index->Home($this->arrCat,$juegos,$generos,$this->detalle,$this->getAll);
+      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
     }
   }
 
@@ -66,8 +67,13 @@ class homeController
         session_start();
         $_SESSION['User'] = $user;
         header(ADMIN);
-        }
       }else{
+        header(HOME);
+        echo "contraseña incorrecta";
+
+      }
+      }else{
+        header (HOME);
         echo "usuario no existe";
       }
   }

@@ -37,12 +37,12 @@ class adminController extends SecuredController
     if(isset($_POST['seleccionarGenAdmin'])){
       $this->categoria = $_POST['seleccionarGenAdmin'];
       $this->arrCat=$this->userMod->FiltroGen($this->categoria);
-      $juegos = $this->adminModel->GetTareas();
-      $generos = $this->adminModel->GetGeneros();
+      $juegos = $this->adminModel->GetJuegos();
+      $generos = $this->genModel->GetGeneros();
       $this->view->Mostrar($this->arrCat,$this->titulo,$juegos,$generos);
     }else{
-    $juegos = $this->adminModel->GetTareas();
-    $generos = $this->adminModel->GetGeneros();
+    $juegos = $this->adminModel->GetJuegos();
+    $generos = $this->genModel->GetGeneros();
     $this->view->Mostrar($this->arrCat,$this->titulo,$juegos,$generos);
   }
   }

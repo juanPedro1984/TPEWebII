@@ -9,8 +9,9 @@ function __construct()
   session_start();
   if (isset($_SESSION['User'])){
     if ( isset($_SESSION['LAST_ACTIVITY']) &&
-    (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
-      $this->logout(); // destruye la sesión, y vuelve al login
+    (time() - $_SESSION['LAST_ACTIVITY'] > 120)) {
+    $this->logout();
+    die();
     }
     $_SESSION['LAST_ACTIVITY'] = time();
   }
@@ -21,13 +22,9 @@ function __construct()
 
 function logout(){
   session_start();
+  session_unset();
   session_destroy();
-
   header(HOME);
 }
-
-
 }
-
-
  ?>

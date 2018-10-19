@@ -10,9 +10,7 @@ class adminView
     $smarty->assign('generos',$generos);
     $smarty->assign('titulo',$titulo);
     $smarty->display('templates/admin.tpl');
-
   }
-
 }
 
 

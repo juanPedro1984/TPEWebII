@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-14 21:42:59
+/* Smarty version 3.1.33, created on 2018-10-17 21:28:57
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\detalle.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc39c435a91a4_45423603',
+  'unifunc' => 'content_5bc78d79160f65_61210029',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '19fade0ee577deda8d2654d9da77f1c7c1d6b9bc' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\detalle.tpl',
-      1 => 1539546173,
+      1 => 1539804525,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bc39c435a91a4_45423603 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bc78d79160f65_61210029 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,12 +56,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['det']->value) {
   <h5 class="infoGame">Precio: $ <?php echo $_smarty_tpl->tpl_vars['det']->value['Precio'];?>
 </h5>
 </div>
-  <h5>Sinopsis:</h5>
+  <h5>Descripcion:</h5>
   <?php echo $_smarty_tpl->tpl_vars['det']->value['Descripcion'];?>
 <br>
 </div>
-
-
 <?php
 }
 }

@@ -13,8 +13,8 @@
   <form class="formRegistro" action="cargarRegistro" method="post">
     <div class="form-group">
       <label class="label" for="exampleInputEmail1">Ingrese su email</label>
-      <input type="text" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Email">
-      <small id="emailHelp" class="form-text text-muted">Registrese con su DNI</small>
+      <input type="email" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Email">
+      <small id="emailHelp" class="form-text text-muted">Registrese con su Email</small>
     </div>
     <div class="form-group">
       <label class="label" for="exampleInputPassword1">Ingrese una contraseña</label>

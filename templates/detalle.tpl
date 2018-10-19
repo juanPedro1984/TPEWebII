@@ -22,11 +22,9 @@
   <h5 class="infoGame">Consola: {$det['Consola']} |</h5>
   <h5 class="infoGame">Precio: $ {$det['Precio']}</h5>
 </div>
-  <h5>Sinopsis:</h5>
+  <h5>Descripcion:</h5>
   {$det['Descripcion']}<br>
 </div>
-
-
 {/foreach}
 
 </div>

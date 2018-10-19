@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-14 23:22:14
+/* Smarty version 3.1.33, created on 2018-10-19 02:49:53
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc3b386146686_05968233',
+  'unifunc' => 'content_5bc92a31d2e835_87351315',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '54ce01dd3ca56340988072aa593a1db2392d2d4f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\register.tpl',
-      1 => 1539552131,
+      1 => 1539910191,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bc3b386146686_05968233 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bc92a31d2e835_87351315 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -39,8 +39,8 @@ function content_5bc3b386146686_05968233 (Smarty_Internal_Template $_smarty_tpl)
   <form class="formRegistro" action="cargarRegistro" method="post">
     <div class="form-group">
       <label class="label" for="exampleInputEmail1">Ingrese su email</label>
-      <input type="text" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Email">
-      <small id="emailHelp" class="form-text text-muted">Registrese con su DNI</small>
+      <input type="email" class="form-control" id="Documento" aria-describedby="emailHelp" name="ingresarUsuario" placeholder="Email">
+      <small id="emailHelp" class="form-text text-muted">Registrese con su Email</small>
     </div>
     <div class="form-group">
       <label class="label" for="exampleInputPassword1">Ingrese una contraseña</label>

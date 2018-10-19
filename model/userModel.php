@@ -26,11 +26,7 @@ class userModel
     $sentencia->execute (array($user,$hash_pass));
   }
 
-  function FiltroGen($categoria){
-    $sentencia= $this->db->prepare("select juegos.*, genero.Genero from juegos, genero where  juegos.id_Genero = ? and juegos.id_Genero = genero.id_Genero");
-    $sentencia->execute(array($categoria));
-    return $sentencia->fetchAll(PDO::FETCH_ASSOC);
-  }
+
 }
 
 

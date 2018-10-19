@@ -1,30 +1,31 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-09 14:06:20
+/* Smarty version 3.1.33, created on 2018-10-19 02:32:05
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bbc99bc260128_21597298',
+  'unifunc' => 'content_5bc92605068751_51433818',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '767d66421727c09744067d18863665d8ca25dd32' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\admin.tpl',
-      1 => 1539086775,
+      1 => 1539908817,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:navAdmin.tpl' => 1,
+    'file:sessionExpired.tpl' => 1,
     'file:generosAdmin.tpl' => 1,
     'file:listaItems.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bbc99bc260128_21597298 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bc92605068751_51433818 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,10 @@ function content_5bbc99bc260128_21597298 (Smarty_Internal_Template $_smarty_tpl)
 <?php $_smarty_tpl->_subTemplateRender('file:navAdmin.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="cuerpo">
-
+  <?php if (isset($_smarty_tpl->tpl_vars['session_expired']->value)) {?>
+  <?php $_smarty_tpl->_subTemplateRender("file:sessionExpired.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+  <?php }?>
   <div class="contForm">
 
     <div class="formulario">
