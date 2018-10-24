@@ -1,31 +1,32 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-19 03:06:38
+/* Smarty version 3.1.33, created on 2018-10-24 20:54:29
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc92e1e521c71_83848974',
+  'unifunc' => 'content_5bd0bfe50f3a28_08940284',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18ae7665139b2298d178d4879ab75891a0fa185a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\index.tpl',
-      1 => 1539911192,
+      1 => 1540407255,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:navHome.tpl' => 1,
-    'file:generos.tpl' => 1,
+    'file:logout.tpl' => 1,
+    'file:signIn.tpl' => 1,
+    'file:generosIndex.tpl' => 1,
     'file:todosLosJuegos.tpl' => 1,
     'file:text.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bc92e1e521c71_83848974 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd0bfe50f3a28_08940284 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,14 +39,58 @@ function content_5bc92e1e521c71_83848974 (Smarty_Internal_Template $_smarty_tpl)
 
 </head>
 <body>
-<?php $_smarty_tpl->_subTemplateRender("file:navHome.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+  <div class="Navegador">
+    <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" href="home" id="Home">Home</a>
+  </li>
+  <li class="nav-item">
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
+  <form action="filtrar" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <button type="submit" class="dropdown-item" formaction="" method="get" name="getAll" value="AllGames" >Todos los juegos</button>
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['genero']->value) {
 ?>
+      <button type="submit" class="dropdown-item" name="seleccionarGen" value="<?php echo $_smarty_tpl->tpl_vars['genero']->value['id_Genero'];?>
+" ><?php echo $_smarty_tpl->tpl_vars['genero']->value['Genero'];?>
+</button>
+    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+  </form>
+  </div>
+  </li>
+
+  <li class="nav-item">
+  <div class="dropdown ">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</button>
+  <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+
+    <?php if (isset($_SESSION['User'])) {?>
+    <?php $_smarty_tpl->_subTemplateRender("file:logout.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+    <?php } else { ?>
+    <?php $_smarty_tpl->_subTemplateRender("file:signIn.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+    <?php }?>
+  </form>
+  </div>
+  </div>
+  </li>
+
+  </ul>
+  </div>
+
 <div class="row">
   <div class="col-12 col-md-8" id="Cuerpo">
     <div class="contenedor">
 
       <?php if ($_smarty_tpl->tpl_vars['categorias']->value !== null) {?>
-        <?php $_smarty_tpl->_subTemplateRender("file:generos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+        <?php $_smarty_tpl->_subTemplateRender("file:generosIndex.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         <?php } elseif ($_smarty_tpl->tpl_vars['getAll']->value !== null) {?>
         <?php $_smarty_tpl->_subTemplateRender("file:todosLosJuegos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -64,9 +109,6 @@ function content_5bc92e1e521c71_83848974 (Smarty_Internal_Template $_smarty_tpl)
     </div></div>
 </div>
 
-<div class="container">
-
-</div>
 <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

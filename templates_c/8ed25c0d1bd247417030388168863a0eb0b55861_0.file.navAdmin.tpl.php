@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-14 23:15:48
+/* Smarty version 3.1.33, created on 2018-10-24 06:27:07
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\navAdmin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc3b204d63d76_09685304',
+  'unifunc' => 'content_5bcff49bda2b16_38182500',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ed25c0d1bd247417030388168863a0eb0b55861' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\navAdmin.tpl',
-      1 => 1539551746,
+      1 => 1540355148,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bc3b204d63d76_09685304 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bcff49bda2b16_38182500 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="Navegador">
   <ul class="nav justify-content-center">
 <li class="nav-item">
@@ -32,7 +32,7 @@ function content_5bc3b204d63d76_09685304 (Smarty_Internal_Template $_smarty_tpl)
 <li class="nav-item">
   <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
-  <form action="filtrarAdmin" method="post" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <form action="filtrarAdmin" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <button type="submit" class="dropdown-item" formaction="administrador" >Todos los juegos</button>
     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');

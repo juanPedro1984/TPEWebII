@@ -35,14 +35,14 @@ class homeController
   }
 
   function HomeController(){
-    if(isset($_POST['seleccionarGen'])){
-      $this->categoria = $_POST['seleccionarGen'];
+    if(isset($_GET['seleccionarGen'])){
+      $this->categoria = $_GET['seleccionarGen'];
       $this->arrCat=$this->genModel->FiltroGen($this->categoria);
       $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
       $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
-    }elseif(isset($_POST['getAll'])){
-      $this->getAll = $_POST['getAll'];
+    }elseif(isset($_GET['getAll'])){
+      $this->getAll = $_GET['getAll'];
       $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
       $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
@@ -79,7 +79,7 @@ class homeController
   }
 
   function mostrarDetalle(){
-    $id=$_POST['checkDetalle'];
+    $id=$_GET['checkDetalle'];
     if (isset($id)){
     $this->detalle = $this->adminModel->GetDetalle($id);
     $this->detalleView->mostrarDet($this->detalle);

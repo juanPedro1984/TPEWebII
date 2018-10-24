@@ -4,6 +4,7 @@ define('ADMIN',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP
 define('HOME',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]));
 define('REGISTER',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/register");
 define('LOGOUT',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/logout");
+define('EDICION',"Location:http://".$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"])."/edicion");
 
 
 class ConfigApp{
@@ -20,6 +21,7 @@ class ConfigApp{
       'agregar'=>'adminController#InsertJuego',
       'borrar'=>'adminController#BorrarJuego',
       'editar'=>'adminController#EditarJuego',
+      'edicion'=>'adminController#Edicion',
       'genero'=>'adminController#InsertGenero',
       'borrarGen'=>'adminController#BorrarGenero',
       'editGen'=>'adminController#EditarGenero',

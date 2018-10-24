@@ -6,6 +6,7 @@ require_once './model/adminModel.php';
 require_once './view/indexView.php';
 require_once './model/userModel.php';
 require_once './view/registerView.php';
+require_once './view/edicionView.php';
 require_once './model/generoModel.php';
 require_once 'securedController.php';
 
@@ -20,6 +21,9 @@ class adminController extends SecuredController
   private $registerView;
   private $arrCat;
   private $categoria;
+  private $edicionView;
+  private $juego;
+  private $generos;
 
   function __construct(){
     parent::__construct();
@@ -31,12 +35,13 @@ class adminController extends SecuredController
     $this->userMod = new userModel();
     $this->adminModel = new adminModel();
     $this->genModel = new generoModel();
+    $this->edicionView = new EdicionView();
   }
 
   function Admin(){
-    if(isset($_POST['seleccionarGenAdmin'])){
-      $this->categoria = $_POST['seleccionarGenAdmin'];
-      $this->arrCat=$this->userMod->FiltroGen($this->categoria);
+    if(isset($_GET['seleccionarGenAdmin'])){
+      $this->categoria = $_GET['seleccionarGenAdmin'];
+      $this->arrCat=$this->genModel->FiltroGen($this->categoria);
       $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
       $this->view->Mostrar($this->arrCat,$this->titulo,$juegos,$generos);
@@ -57,9 +62,19 @@ class adminController extends SecuredController
     header(ADMIN);
   }
 
+  function Edicion(){
+  $id=$_POST['idEditar'];
+  $this->generos = $this->genModel->GetGeneros();
+  $this->juego = $this->adminModel->GetDetalle($id);
+  $this->edicionView->Edicion($this->juego,$this->generos);
+  }
+
   function EditarJuego(){
-    $this->adminModel->EditarJuego();
-    header(ADMIN);
+    $id=$_POST['idEditar'];
+    $this->id = $this->adminModel->EditarJuego();
+    $this->generos = $this->genModel->GetGeneros();
+    $this->juego = $this->adminModel->GetDetalle($id);
+    $this->edicionView->Edicion($this->juego,$this->generos);
   }
 
   function BorrarGenero(){

@@ -24,31 +24,35 @@ class adminModel
   }
 
   function InsertJuego(){
-    $consola=$_GET['cargaConsola'];
-    $titulo=$_GET['cargaTitulo'];
-    $id_Genero=$_GET['selectGen'];
-    $descripcion=$_GET['cargaDescripcion'];
-    $precio=$_GET['cargaPrecio'];
-    $sentencia = $this->db->prepare("INSERT INTO juegos(Consola,Titulo,id_Genero,Descripcion,Precio) VALUES (?,?,?,?,?)" );
-    $sentencia->execute (array($consola,$titulo,$id_Genero,$descripcion,$precio));
+    $consola=$_POST['cargaConsola'];
+    $titulo=$_POST['cargaTitulo'];
+    $id_Genero=$_POST['selectGen'];
+    $descripcion=$_POST['cargaDescripcion'];
+    $precio=$_POST['cargaPrecio'];
+    $imagen=$_POST['cargaImagen'];
+    $sentencia = $this->db->prepare("INSERT INTO juegos(Consola,id_Genero,Titulo,Descripcion,Precio,img_path) VALUES (?,?,?,?,?,?)" );
+    $sentencia->execute (array($consola,$id_Genero,$titulo,$descripcion,$precio,$imagen));
+
+
   }
 
   function BorrarJuego(){
     $id_juego = $_GET['idBorrar'];
     $sentencia = $this->db->prepare("delete from juegos where id_Juego=?");
     $sentencia -> execute(array($id_juego));
+
   }
 
   function EditarJuego(){
-    $id_juego = $_GET['idEditar'];
-    $consola=$_GET['editConsola'];
-    $titulo=$_GET['editTitulo'];
-    $id_Genero=$_GET['editGenero'];
-    $descripcion=$_GET['editDescripcion'];
-    $precio=$_GET['editPrecio'];
-    $sentencia = $this->db->prepare("update juegos set Consola=?,Titulo=?,Descripcion=?,id_Genero=?,Precio=? where id_Juego=?");
-    $sentencia->execute(array($consola,$titulo,$descripcion,$id_Genero,$precio,$id_juego));
+    $id_juego = $_POST['idEditar'];
+    $consola=$_POST['editConsola'];
+    $titulo=$_POST['editTitulo'];
+    $id_Genero=$_POST['editGenero'];
+    $descripcion=$_POST['editDescripcion'];
+    $precio=$_POST['editPrecio'];
+    $imagen=$_POST['editImagen'];
+    $sentencia = $this->db->prepare("update juegos set Consola=?,Titulo=?,Descripcion=?,id_Genero=?,Precio=?,img_path=? where id_Juego=?");
+    $sentencia->execute(array($consola,$titulo,$descripcion,$id_Genero,$precio,$imagen,$id_juego));
   }
-
 }
  ?>

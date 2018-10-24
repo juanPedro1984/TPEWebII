@@ -1,6 +1,6 @@
 <h2>Juegos por genero</h2>
 
-  <form action="mostrarDetalle" method="post">
+  <form action="mostrarDetalle" method="get">
     <table class="table table-striped">
       <thead>
         <tr>

@@ -9,16 +9,33 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-{include file = 'navAdmin.tpl'}
-<div class="cuerpo">
-  {if isset($session_expired)}
-  {include file = "sessionExpired.tpl"}
-  {/if}
-  <div class="contForm">
+  <div class="Navegador">
+    <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" href="home" id="Home">Home</a>
+  </li>
+  <li class="nav-item">
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
+    <form action="filtrarAdmin" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <button type="submit" class="dropdown-item" formaction="administrador" >Todos los juegos</button>
+      {foreach from=$generos item=genero}
+        <button type="submit" class="dropdown-item" name="seleccionarGenAdmin" value="{$genero['id_Genero']}" >{$genero['Genero']}</button>
+      {/foreach}
+    </form>
+  </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="logout">Logout</a>
+  </li>
+  </ul>
+  </div>
 
+<div class="cuerpo">
+  <div class="contForm">
     <div class="formulario">
-      <h2>Alta y Baja de Datos</h2>
-      <form class="formCarga" action="agregar" method="get">
+      <h2>Carga de Juegos</h2>
+      <form class="formCarga" action="agregar" method="post">
         <input class="inputCarga" type="text" name="cargaConsola" value="" placeholder="ingrese tipo de consola">
         <input class="inputCarga" type="text" name="cargaTitulo" value="" placeholder="ingrese titulo del juego">
         <p>Seleccione Genero
@@ -30,61 +47,53 @@
       </p>
         <input class="inputCarga" type="number" name="cargaPrecio" value="" placeholder="ingrese precio del juego">
         <textarea name="cargaDescripcion" rows="4" cols="54" placeholder="ingrese breve descripcion"></textarea>
-        <p>Ingrese Id para borrar datos
-        <input  class="inputCarga" type="text" name="idBorrar" value="" placeholder="ingrese Id">
-        </p>
+        <input class="inputCarga" type="text" name="cargaImagen" value="" placeholder="ingrese la direccion de la imagen">
         <div class="buttons">
           <button class="btn" type="submit" name="button">Cargar</button>
-          <button class="btn" type="submit" formaction="borrar"name="button">Borrar</button>
         </div>
       </form>
     </div>
-
     <div class="formulario">
-      <h2>Edicion de Datos</h2>
-      <form class="formCarga" action="editar" method="get">
-        <input  class="inputCarga" type="text" name="idEditar" value="" placeholder="ingrese Id">
-        <input class="inputCarga" type="text" name="editConsola" value="" placeholder="ingrese tipo de consola">
-        <p>Seleccione Genero
-        <select class="inputCarga" name="editGenero">
-          {foreach from=$generos item=genero}
-            <option value= "{$genero['id_Genero']}" >{$genero['Genero']}</option>
-          {/foreach}
-        </select>
-      </p>
-        <input class="inputCarga" type="text" name="editTitulo" value="" placeholder="ingrese titulo del juego">
-        <input class="inputCarga" type="number" name="editPrecio" value="" placeholder="ingrese precio del juego">
-        <textarea name="editDescripcion" rows="4" cols="54" placeholder="ingrese breve descripcion"></textarea>
-        <button class="btn" type="submit" name="button">Editar</button>
-      </form>
-    </div>
-
-    <div class="formulario">
-      <h2>Alta y Baja de Generos</h2>
-      <form class="formCarga" action="genero" method="get">
+      <h2>Carga de Generos</h2>
+      <form class="formCarga" action="genero" method="post">
         <input class="inputCarga" type="text" name="cargaGenero" value="" placeholder="ingrese genero del juego">
         <div class="buttons">
           <button class="btn" type="submit" name="button">Cargar</button>
-          <button class="btn" type="submit" name="button"formaction="borrarGen">Borrar</button>
         </div>
       </form>
     </div>
+
+  <div class="listaGen">
+    <h2 class="items">Lista de generos</h2>
+    <ul class='tablaGen'>
+    {foreach from=$generos item=genero}
+    <li class="genRow">
+      <p class="parr">Id: {$genero['id_Genero']} | Genero: {$genero['Genero']}</p>
+      <form class="boton" action="borrarGen" method="post">
+        <button class="btn" type="submit" name="cargaGenero" value="{$genero['id_Genero']}">Borrar</button>
+      </form>
+      </li>
+      <hr>
+    {/foreach}
+    </ul>
     <div class="formulario">
-      <h2>Edicion de Generos</h2>
-      <form class="formCarga" action="editGen" method="get">
-        <input class="inputCarga" type="number" name="id_gen" value="" placeholder="ingrese id a modificar">
-        <input class="inputCarga" type="text" name="editGen" value="" placeholder="ingrese genero del juego">
-        <button class="btn" type="submit" name="button">Editar</button>
+      <h2>Editar genero</h2>
+      <small>Seleccione de la lista el genero que desea modificar</small>
+      <form class="formCarga" action="editGen" method="post">
+        <input class="inputCarga" type="text" name="id_gen" value="" placeholder="ingrese id del genero">
+        <input class="inputCarga" type="text" name="editGen" value="" placeholder="ingrese genero">
+        <button class="btn" type="submit">Editar</button>
       </form>
     </div>
-        <div class="lista">
-          {if $categorias !== null}
-            {include file="generosAdmin.tpl"}
-            {else}
-            {include file="listaItems.tpl"}
-            {/if}
+  </div>
+  </div>
 
-    </div>
+  <div class="lista">
+    {if $categorias !== null}
+      {include file="generosAdmin.tpl"}
+    {else}
+      {include file="listaJuegosAdmin.tpl"}
+    {/if}
   </div>
 
 </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-14 20:11:43
+/* Smarty version 3.1.33, created on 2018-10-24 05:59:21
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\todosLosJuegos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc386df0dda61_88874858',
+  'unifunc' => 'content_5bcfee194d76f0_04772564',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '709090652f4ff5f57cd1f451ab1b93f493241364' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\todosLosJuegos.tpl',
-      1 => 1539540699,
+      1 => 1540353518,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bc386df0dda61_88874858 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bcfee194d76f0_04772564 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2>Todos los juegos</h2>
-  <form action="mostrarDetalle" method="post">
+  <form action="mostrarDetalle" method="get">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -43,7 +43,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
 </button></td>
           <td class="tdCategoria"><?php echo $_smarty_tpl->tpl_vars['juego']->value['Consola'];?>
 </td>
-          <td class="tdCategoria"><button type="submit" class="btnDet" formaction="filtrar" name="seleccionarGen" value="<?php echo $_smarty_tpl->tpl_vars['juego']->value['id_Genero'];?>
+          <td class="tdCategoria"><button type="submit" class="btnDet" formaction="filtrar" method="get" name="seleccionarGen" value="<?php echo $_smarty_tpl->tpl_vars['juego']->value['id_Genero'];?>
 "><?php echo $_smarty_tpl->tpl_vars['juego']->value['Genero'];?>
 </td>
           </tr>

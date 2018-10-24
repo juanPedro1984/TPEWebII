@@ -27,16 +27,10 @@ html{
 .row{
   padding: 0 20px 0 30px;
 }
-.container,.contForm{
-  background-color: lightgray;
-  margin: 0 auto;
-}
 .contForm{
-  margin: 0 2% 0 2%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-content: space-around;
-  justify-content: center;
 }
 #foto1, #fotodos{
   height: 30%;
@@ -59,12 +53,13 @@ html{
   border: solid black 1px;
   background-color: white;
   margin: 20px;
-  width:auto;
-  height: auto;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
   font-style: 'Comic Sans MS';
+}
+.formEdicion{
+  height: 450px;
 }
 .inputCarga{
   display: block;
@@ -85,16 +80,60 @@ html{
 .buttons{
   display: inline-flex;
 }
-.tabla{
+
+.tablaJuegos{
   border: solid 1px black;
-  margin: 5px 10% 0 10% ;
   background-color: white;
-  padding-right: 10px;
-  padding-top: 10px;
+  margin: 5px;
+  height: 1000px;
+  width: 850px;
+  overflow:scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.listaGen,.listaJuegos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.listaGen{
+  width: 450px;
+}
+.parr{
+  display: inline;
+  width: 200px;
+  margin: 0;
+}
+.boton{
+  display: inline-flex;
+  flex-direction: row;
+  width: 100px;
+}
+.btnLista{
+  margin-right: 60px;
+}
+.genRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin:0;
+}
+.tablaGen{
+  display: inline;
+  flex-direction: row;
+  border: solid 1px black;
+  background-color: white;
+  margin: 5px;
+  width: 420px;
+  height: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .formRegistro{
   display:flex;
   justify-content: center;
+  background-color: white;
   flex-direction: column;
   border: solid 1px black;
   width: 500px;
@@ -109,11 +148,28 @@ html{
 }
 .cuerpo{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 100%;
+  background-color: lightgray;
+  margin: 1%;
+}
+.cuerpoRegistro{
+  display: flex;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
   height: 100%;
+  background-color: lightgray;
+  margin: 1%;
 }
+.lista{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 .label{
   margin-left: 5px;
 }
@@ -132,6 +188,12 @@ html{
 .cuerpoDetalle{
   margin: 30px 60px 20px 60px;
 }
+.cuerpoEdicion{
+  margin: 0 ;
+  padding: 0;
+  width: 80%;
+  height: 80%;
+}
 .descripcion{
   margin: 30px 0 20px 0;
   border: solid 1px lightgrey;
@@ -146,4 +208,18 @@ html{
 }
 .infoTitulo{
   text-align: center;
+}
+.rowEdicion{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.gameFig{
+  display: flex;
+  justify-content: center;
+}
+.gameImg{
+  width: 80%;
+  height: 80%;
 }

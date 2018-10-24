@@ -9,8 +9,8 @@
 <li class="nav-item">
   <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
-<form action="filtrar" method="post" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <button type="submit" class="dropdown-item" formaction="" name="getAll" value="1" >Todos los juegos</button>
+<form action="filtrar" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <button type="submit" class="dropdown-item" formaction="" method="get" name="getAll" value="AllGames" >Todos los juegos</button>
   {foreach from=$generos item=genero}
     <button type="submit" class="dropdown-item" name="seleccionarGen" value="{$genero['id_Genero']}" >{$genero['Genero']}</button>
   {/foreach}

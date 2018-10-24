@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-24 05:59:14
+/* Smarty version 3.1.33, created on 2018-10-24 05:58:52
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\generos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bcfee12065168_14803961',
+  'unifunc' => 'content_5bcfedfce71f05_02760816',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bcfee12065168_14803961 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bcfedfce71f05_02760816 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2>Juegos por genero</h2>
 
   <form action="mostrarDetalle" method="get">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-15 05:06:41
+/* Smarty version 3.1.33, created on 2018-10-24 05:58:49
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\navHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc404416c2a03_54311314',
+  'unifunc' => 'content_5bcfedf9af2af0_90686907',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3e737b1cc97f3c3f0723049b1dc6a78e44d0667b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\navHome.tpl',
-      1 => 1539572798,
+      1 => 1540353360,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:signIn.tpl' => 1,
   ),
 ),false)) {
-function content_5bc404416c2a03_54311314 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bcfedf9af2af0_90686907 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="Navegador">
   <ul class="nav justify-content-center">
 <li class="nav-item">
@@ -34,8 +34,8 @@ function content_5bc404416c2a03_54311314 (Smarty_Internal_Template $_smarty_tpl)
 <li class="nav-item">
   <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
-<form action="filtrar" method="post" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <button type="submit" class="dropdown-item" formaction="" name="getAll" value="1" >Todos los juegos</button>
+<form action="filtrar" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <button type="submit" class="dropdown-item" formaction="" method="get" name="getAll" value="AllGames" >Todos los juegos</button>
   <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
 if ($_from !== null) {

@@ -7,8 +7,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-  {include file = 'navRegister.tpl'}
-<div class="cuerpo">
+  <div class="Navegador">
+    <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" href="home" id="Home">Home</a>
+  </li>
+  </ul>
+  </div>
+
+<div class="cuerpoRegistro">
   <h3>Formulario de registro</h3>
   <form class="formRegistro" action="cargarRegistro" method="post">
     <div class="form-group">

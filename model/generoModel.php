@@ -20,20 +20,20 @@ class generoModel
 }
 
   function InsertGenero(){
-    $genero=$_GET['cargaGenero'];
+    $genero=$_POST['cargaGenero'];
     $sentencia = $this->db->prepare("INSERT INTO genero (Genero) VALUES (?)");
     $sentencia->execute (array($genero));
 }
 
   function BorrarGenero(){
-    $genero=$_GET['cargaGenero'];
-    $sentencia = $this->db->prepare("delete from Genero where genero=?");
+    $genero=$_POST['cargaGenero'];
+    $sentencia = $this->db->prepare("delete from Genero where id_Genero=?");
     $sentencia -> execute(array($genero));
 }
 
   function EditarGenero(){
-    $id_Genero=$_GET['id_gen'];
-    $genero=$_GET['editGen'];
+    $id_Genero=$_POST['id_gen'];
+    $genero=$_POST['editGen'];
     $sentencia = $this->db->prepare("update genero set Genero=? where id_Genero=?");
     $sentencia->execute(array($genero,$id_Genero));
 }
