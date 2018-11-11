@@ -36,6 +36,12 @@ class adminController extends SecuredController
     $this->adminModel = new adminModel();
     $this->genModel = new generoModel();
     $this->edicionView = new EdicionView();
+
+    if($this->isAdmin() != true ){
+      header(HOME);
+    }
+
+
   }
 
   function Admin(){
@@ -53,12 +59,19 @@ class adminController extends SecuredController
   }
 
   function InsertJuego(){
-    $this->adminModel->InsertJuego();
+    $consola=$_POST['cargaConsola'];
+    $titulo=$_POST['cargaTitulo'];
+    $id_Genero=$_POST['selectGen'];
+    $descripcion=$_POST['cargaDescripcion'];
+    $precio=$_POST['cargaPrecio'];
+    $imagen=$_POST['cargaImagen'];
+    $this->adminModel->InsertJuego($consola,$titulo,$id_Genero,$descripcion,$precio,$imagen);
     header(ADMIN);
   }
 
   function BorrarJuego(){
-    $this->adminModel->BorrarJuego();
+    $id_juego = $_GET['idBorrar'];
+    $this->adminModel->BorrarJuego($id_juego);
     header(ADMIN);
   }
 
@@ -71,24 +84,35 @@ class adminController extends SecuredController
 
   function EditarJuego(){
     $id=$_POST['idEditar'];
-    $this->id = $this->adminModel->EditarJuego();
+    $id_juego = $_POST['idEditar'];
+    $consola=$_POST['editConsola'];
+    $titulo=$_POST['editTitulo'];
+    $id_Genero=$_POST['editGenero'];
+    $descripcion=$_POST['editDescripcion'];
+    $precio=$_POST['editPrecio'];
+    $imagen=$_POST['editImagen'];
+    $this->id = $this->adminModel->EditarJuego($id_juego,$consola,$titulo,$id_Genero,$descripcion,$precio,$imagen);
     $this->generos = $this->genModel->GetGeneros();
     $this->juego = $this->adminModel->GetDetalle($id);
     $this->edicionView->Edicion($this->juego,$this->generos);
   }
 
   function BorrarGenero(){
-    $this->genModel->BorrarGenero();
+    $genero=$_POST['cargaGenero'];
+    $this->genModel->BorrarGenero($genero);
     header(ADMIN);
   }
 
   function InsertGenero(){
-    $this->genModel->InsertGenero();
+    $genero=$_POST['cargaGenero'];
+    $this->genModel->InsertGenero($genero);
     header(ADMIN);
   }
 
   function EditarGenero(){
-    $this->genModel->EditarGenero();
+    $id_Genero=$_POST['id_gen'];
+    $genero=$_POST['editGen'];
+    $this->genModel->EditarGenero($id_Genero,$genero);
     header(ADMIN);
   }
 

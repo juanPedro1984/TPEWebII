@@ -23,34 +23,18 @@ class adminModel
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function InsertJuego(){
-    $consola=$_POST['cargaConsola'];
-    $titulo=$_POST['cargaTitulo'];
-    $id_Genero=$_POST['selectGen'];
-    $descripcion=$_POST['cargaDescripcion'];
-    $precio=$_POST['cargaPrecio'];
-    $imagen=$_POST['cargaImagen'];
+  function InsertJuego($consola,$titulo,$id_Genero,$descripcion,$precio,$imagen){
     $sentencia = $this->db->prepare("INSERT INTO juegos(Consola,id_Genero,Titulo,Descripcion,Precio,img_path) VALUES (?,?,?,?,?,?)" );
     $sentencia->execute (array($consola,$id_Genero,$titulo,$descripcion,$precio,$imagen));
-
-
   }
 
-  function BorrarJuego(){
-    $id_juego = $_GET['idBorrar'];
+  function BorrarJuego($id_juego){
     $sentencia = $this->db->prepare("delete from juegos where id_Juego=?");
     $sentencia -> execute(array($id_juego));
 
   }
 
-  function EditarJuego(){
-    $id_juego = $_POST['idEditar'];
-    $consola=$_POST['editConsola'];
-    $titulo=$_POST['editTitulo'];
-    $id_Genero=$_POST['editGenero'];
-    $descripcion=$_POST['editDescripcion'];
-    $precio=$_POST['editPrecio'];
-    $imagen=$_POST['editImagen'];
+  function EditarJuego($id_juego,$consola,$titulo,$id_Genero,$descripcion,$precio,$imagen){
     $sentencia = $this->db->prepare("update juegos set Consola=?,Titulo=?,Descripcion=?,id_Genero=?,Precio=?,img_path=? where id_Juego=?");
     $sentencia->execute(array($consola,$titulo,$descripcion,$id_Genero,$precio,$imagen,$id_juego));
   }

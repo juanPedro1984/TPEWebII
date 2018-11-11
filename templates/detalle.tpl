@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <title></title>
-
+  <base href="//{$smarty.server.SERVER_NAME}{dirname($smarty.server.PHP_SELF)}/" target="_self">
   <link rel="stylesheet" type="text/css" href="./style/estilo.css" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 </head>
 <body>
   <div class="Navegador">
@@ -36,8 +37,14 @@
   {$det['Descripcion']}<br>
 </div>
 {/foreach}
-
+{if isset ($smarty.session.User)}
+{include file='comentarios.tpl'}
+{else}
+{include file='comenDisabled.tpl'}
+{/if}
 </div>
+
 {include file = 'footer.tpl'}
 </body>
+<script src="./js/ApiAjax.js" type="text/javascript"></script>
 </html>

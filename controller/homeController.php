@@ -59,27 +59,37 @@ class homeController
   }
 
   function verifyUser(){
+    $administrador = "admin";
     $user = $_POST['Documento'];
     $pass = $_POST['Contraseña'];
     $userDb= $this->userMod->GetUsers($user);
     if (isset($userDb)) {
-      if (password_verify($pass, $userDb[0]['Password'])){
-        session_start();
-        $_SESSION['User'] = $user;
-        header(ADMIN);
-      }else{
-        header(HOME);
-        echo "contraseña incorrecta";
-
-      }
+      if ((password_verify($pass, $userDb[0]['Password']))) {
+        switch ($userDb[0]['Admin_permiso']) {
+          case '1':
+              session_start();
+              $_SESSION['User'] = $administrador;
+              header(ADMIN);
+            break;
+          case '0':
+              session_start();
+              $_SESSION['User'] = $user;
+              header(HOME);
+            break;
+          default:
+              header(HOME);
+              echo "contraseña incorrecta";
+            break;
+        }
       }else{
         header (HOME);
         echo "usuario no existe";
       }
   }
+}
 
-  function mostrarDetalle(){
-    $id=$_GET['checkDetalle'];
+  function mostrarDetalle($ide){
+    $id=$ide[0];
     if (isset($id)){
     $this->detalle = $this->adminModel->GetDetalle($id);
     $this->detalleView->mostrarDet($this->detalle);

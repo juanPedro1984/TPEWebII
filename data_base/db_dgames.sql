@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2018 a las 23:15:25
+-- Tiempo de generación: 11-11-2018 a las 15:32:32
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_dgames`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_Comentarios` int(11) NOT NULL,
+  `Comentarios` text NOT NULL,
+  `id_Juego` int(11) NOT NULL,
+  `id_Usuario` int(11) NOT NULL,
+  `Fecha` date NOT NULL,
+  `Valoracion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_Comentarios`, `Comentarios`, `id_Juego`, `id_Usuario`, `Fecha`, `Valoracion`) VALUES
+(8, 'lalalallal', 66, 29, '2018-11-07', 4),
+(9, 'lalalallal', 66, 29, '2018-11-07', 4);
 
 -- --------------------------------------------------------
 
@@ -81,23 +104,30 @@ INSERT INTO `juegos` (`id_Juego`, `Consola`, `id_Genero`, `Titulo`, `Descripcion
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `Usuario` varchar(30) NOT NULL,
-  `Password` varchar(100) NOT NULL
+  `Password` varchar(100) NOT NULL,
+  `Admin_permiso` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `Usuario`, `Password`) VALUES
-(23, 'juan@gmail.com', '$2y$10$hHVHmsF0dnaCiQ41LhTyheQ0jToCXWkoC/y32cCBvmigNLtOUnBeS'),
-(24, 'pedro@gmail.com', '$2y$10$skzruhYBdVzlzUJWcGJ7QOi7Mb4dJyYRT083h6iKOlgE7n5YYfine'),
-(25, 'pepe@gmail.com', '$2y$10$.AVVP7kb8vqwkYunCSGvd..ob3VcNfpKX/a2Ym4U3rASPC1qrOASu'),
-(26, 'sasha@lala', '$2y$10$Gbot1X9MJtTgKtnMw/rF2uV4SCWQkndGCMgi61AvOY63H3SxTgTmi'),
-(27, 'jp@gmail.com', '$2y$10$5h8///pS.qpa9dZRVqJzDOg7H385.1ClB9h75YNlDCX/sF0ErLChK');
+INSERT INTO `usuarios` (`id_usuario`, `Usuario`, `Password`, `Admin_permiso`) VALUES
+(28, 'juan@gmail.com', '$2y$10$x34ZWOKsIrKsQvhrMeC8Aeeom7mWzodhCyGfJ5QPJ6LXKz5sV6kyy', 1),
+(29, 'pedro@gmail.com', '$2y$10$ybxtT/m8lfJx3JxTTvgFdeUMhWkztKyVGNCkK/xuLISajLUwrCCJy', 0),
+(30, 'sasha@lala', '$2y$10$euL1HdQRq3uha/Ja2VrRCezw3v83/8pv9SIAPp8KDu/HpApxBx2hK', 0);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_Comentarios`),
+  ADD KEY `id_Juego` (`id_Juego`),
+  ADD KEY `id_Usuario` (`id_Usuario`);
 
 --
 -- Indices de la tabla `genero`
@@ -123,10 +153,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_Comentarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `id_Genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_Genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`
@@ -138,11 +174,18 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_Juego`) REFERENCES `juegos` (`id_Juego`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `juegos`

@@ -20,6 +20,15 @@ function __construct()
   }
 }
 
+function isAdmin(){
+  if ($_SESSION['User']=='admin'){
+  return true;
+}else{
+  return false;
+}
+}
+
+
 function logout(){
   session_start();
   session_unset();
