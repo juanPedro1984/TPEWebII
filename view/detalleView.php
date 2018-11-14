@@ -4,12 +4,11 @@ require_once('libs/Smarty.class.php');
 class DetalleView
 {
 
-  function mostrarDet($detalles)
+  function mostrarDet($detalles,$userId)
   {
-    /* detalle: trae toda la informacion del juego seleccionado en index*/
-    session_start();
     $smarty = new Smarty();
     $smarty->assign('detalle',$detalles);
+    $smarty->assign('userId',$userId);
     $smarty->display('templates/detalle.tpl');
   }
 }

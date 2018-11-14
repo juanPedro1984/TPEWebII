@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-11-03 03:28:56
+/* Smarty version 3.1.33, created on 2018-11-13 00:59:47
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\detalle.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bdd07e87cfd84_48783016',
+  'unifunc' => 'content_5bea13f3e1b899_25351656',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '19fade0ee577deda8d2654d9da77f1c7c1d6b9bc' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\detalle.tpl',
-      1 => 1541211588,
+      1 => 1542067184,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bdd07e87cfd84_48783016 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bea13f3e1b899_25351656 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +54,8 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['det']->value) {
 ?>
 <div class="infoTitulo">
-  <h2><?php echo $_smarty_tpl->tpl_vars['det']->value['Titulo'];?>
+  <h2 class="Titulo" title="<?php echo $_smarty_tpl->tpl_vars['det']->value['id_Juego'];?>
+"><?php echo $_smarty_tpl->tpl_vars['det']->value['Titulo'];?>
 </h2>
 </div>
 <figure class="gameFig" >
@@ -83,14 +84,20 @@ $_smarty_tpl->_subTemplateRender('file:comentarios.tpl', $_smarty_tpl->cache_id,
 } else {
 $_smarty_tpl->_subTemplateRender('file:comenDisabled.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }?>
-</div>
+<div class="opi">
 
+</div>
+</div>
 <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 </body>
 <?php echo '<script'; ?>
  src="./js/ApiAjax.js" type="text/javascript"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"><?php echo '</script'; ?>
+>
+
 </html>
 <?php }
 }

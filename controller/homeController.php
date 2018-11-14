@@ -7,8 +7,6 @@ require_once './model/adminModel.php';
 require_once './model/generoModel.php';
 require_once './view/detalleView.php';
 
-
-
 class homeController
 {
 
@@ -23,7 +21,7 @@ class homeController
   private $detalle;
   private $getAll;
   private $session_expired;
-
+  private $userId;
 
   function __construct() {
     $this->index = new indexView();
@@ -59,7 +57,6 @@ class homeController
   }
 
   function verifyUser(){
-    $administrador = "admin";
     $user = $_POST['Documento'];
     $pass = $_POST['Contraseña'];
     $userDb= $this->userMod->GetUsers($user);
@@ -68,7 +65,7 @@ class homeController
         switch ($userDb[0]['Admin_permiso']) {
           case '1':
               session_start();
-              $_SESSION['User'] = $administrador;
+              $_SESSION['User'] = $user;
               header(ADMIN);
             break;
           case '0':
@@ -90,9 +87,17 @@ class homeController
 
   function mostrarDetalle($ide){
     $id=$ide[0];
+    $user;
+    session_start();
+    if (isset($_SESSION['User'])){
+      $user = $_SESSION['User'];
+    }
     if (isset($id)){
+      if (isset($user)){
+    $this->userId = $this->userMod->GetUsers($user);
+  }
     $this->detalle = $this->adminModel->GetDetalle($id);
-    $this->detalleView->mostrarDet($this->detalle);
+    $this->detalleView->mostrarDet($this->detalle,$this->userId);
   }
 }
 

@@ -1,7 +1,5 @@
 <?php
 
-require_once './view/registerView.php';
-
 class userModel
 {
   private $db;
@@ -11,7 +9,6 @@ class userModel
     $this->db = new PDO('mysql:host=localhost;'
     .'dbname=db_dgames;charset=utf8'
     , 'root', '');
-    $this->registerView = new registerView();
   }
 
   function GetUsers($user)  {

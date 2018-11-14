@@ -1,11 +1,14 @@
 <?php
 
+require_once './model/userModel.php';
 
 class SecuredController
 {
-
+private $userMod;
 function __construct()
 {
+  $this->userMod= new userModel();
+
   session_start();
   if (isset($_SESSION['User'])){
     if ( isset($_SESSION['LAST_ACTIVITY']) &&
@@ -21,7 +24,8 @@ function __construct()
 }
 
 function isAdmin(){
-  if ($_SESSION['User']=='admin'){
+  $userDb= $this->userMod->GetUsers($_SESSION['User']);
+  if ($userDb[0]['Admin_permiso']==1){
   return true;
 }else{
   return false;

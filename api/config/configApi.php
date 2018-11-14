@@ -9,7 +9,7 @@ class ConfigApi{
     'comentarios#POST'=>'ComentApiController#PostComentario',
     'comentarios#GET'=>'ComentApiController#GetComentarios',
     'comentarios#DELETE'=>'ComentApiController#DeleteComentario',
-    'comentarios#PUT'=>'ComentApiController#UpdateComentario'
+    'comentarios#PUT'=>'ComentApiController#UpdateComentario',
 ];
 }
 

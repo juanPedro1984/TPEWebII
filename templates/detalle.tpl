@@ -22,7 +22,7 @@
 
 {foreach from=$detalle item=det}
 <div class="infoTitulo">
-  <h2>{$det['Titulo']}</h2>
+  <h2 class="Titulo" title="{$det['id_Juego']}">{$det['Titulo']}</h2>
 </div>
 <figure class="gameFig" >
   <img class="gameImg" src="{$det['img_path']}" alt="Shadow of the colossus">
@@ -42,9 +42,13 @@
 {else}
 {include file='comenDisabled.tpl'}
 {/if}
-</div>
+<div class="opi">
 
+</div>
+</div>
 {include file = 'footer.tpl'}
 </body>
 <script src="./js/ApiAjax.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+
 </html>
