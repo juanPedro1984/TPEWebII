@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-24 20:54:44
+/* Smarty version 3.1.33, created on 2018-11-21 21:27:42
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\edicion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd0bff4358658_23943213',
+  'unifunc' => 'content_5bf5bfbebf1002_93081819',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '91eb1d85c775241d734c0ed454b38b5f322ccbb7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\edicion.tpl',
-      1 => 1540407246,
+      1 => 1542716011,
       2 => 'file',
     ),
   ),
@@ -22,18 +22,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bd0bff4358658_23943213 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf5bfbebf1002_93081819 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title> </title>
+  <base href="//<?php echo $_SERVER['SERVER_NAME'];
+echo dirname($_SERVER['PHP_SELF']);?>
+/" target="_self">
 
+  <title> </title>
   <link rel="stylesheet" type="text/css" href="./style/estilo.css" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
 
   <div class="Navegador">
     <ul class="nav justify-content-center">
@@ -92,17 +96,21 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 ">
     <input class="inputCarga" type="number" name="editPrecio" value="<?php echo $_smarty_tpl->tpl_vars['game']->value['Precio'];?>
 ">
-    <textarea name="editDescripcion" rows="4" cols="54"><?php echo $_smarty_tpl->tpl_vars['game']->value['Descripcion'];?>
+    <textarea name="editDescripcion" rows="5" cols="54"><?php echo $_smarty_tpl->tpl_vars['game']->value['Descripcion'];?>
 </textarea>
-    <input class="inputCarga" type="text" name="editImagen" value="<?php echo $_smarty_tpl->tpl_vars['game']->value['img_path'];?>
-" placeholder="ingrese la direccion de la imagen">
     <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <button class="btn" type="submit"name="idEditar" value="<?php echo $_smarty_tpl->tpl_vars['game']->value['id_Juego'];?>
 ">Editar</button>
-  </form>
+      </form>
+    <form class="formCarga" action="agregarimg" method="post" enctype="multipart/form-data">
+      <input class="inputCarga" type="file" name="imagen[]" multiple value="" placeholder="Elegir imagenes">
+      <button class="btn" type="submit" name="id_Juego" value="<?php echo $_smarty_tpl->tpl_vars['game']->value['id_Juego'];?>
+">Subir</button>
+    </form>
+
 </div>
 <div class="cuerpoEdicion" id="Cuerpo">
 
@@ -115,10 +123,29 @@ foreach ($_from as $_smarty_tpl->tpl_vars['det']->value) {
   <h2><?php echo $_smarty_tpl->tpl_vars['det']->value['Titulo'];?>
 </h2>
 </div>
-<figure class="gameFig" >
-  <img class="gameImg" src="<?php echo $_smarty_tpl->tpl_vars['det']->value['img_path'];?>
-" alt="Shadow of the colossus">
-</figure>
+<div class="contEditImg">
+  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['imagenes']->value, 'img');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['img']->value) {
+?>
+  <figure class="editFig">
+    <img class="editImg"src="<?php echo $_smarty_tpl->tpl_vars['img']->value['Img_path'];?>
+" alt="">
+    <form class="" action="deleteImg" method="post">
+        <input type="hidden" name="id_Juego" value="<?php echo $_smarty_tpl->tpl_vars['det']->value['id_Juego'];?>
+">
+        <input type="hidden" name="delImg" value="<?php echo $_smarty_tpl->tpl_vars['img']->value['id_Imagen'];?>
+">
+        <button type="submit" class="delBtn" name="" value="">X</button>
+    </form>
+
+  </figure>
+  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+</div>
 <div class="descripcion">
 <div class="info">
   <h5 class="infoGame">Genero: <?php echo $_smarty_tpl->tpl_vars['det']->value['Genero'];?>
@@ -142,7 +169,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </div>
 <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-
 </body>
 </html>
 <?php }

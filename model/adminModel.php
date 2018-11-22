@@ -23,9 +23,9 @@ class adminModel
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function InsertJuego($consola,$titulo,$id_Genero,$descripcion,$precio,$imagen){
-    $sentencia = $this->db->prepare("INSERT INTO juegos(Consola,id_Genero,Titulo,Descripcion,Precio,img_path) VALUES (?,?,?,?,?,?)" );
-    $sentencia->execute (array($consola,$id_Genero,$titulo,$descripcion,$precio,$imagen));
+  function InsertJuego($consola,$titulo,$id_Genero,$descripcion,$precio){
+    $sentencia = $this->db->prepare("INSERT INTO juegos(Consola,id_Genero,Titulo,Descripcion,Precio) VALUES (?,?,?,?,?)" );
+    $sentencia->execute (array($consola,$id_Genero,$titulo,$descripcion,$precio));
   }
 
   function BorrarJuego($id_juego){

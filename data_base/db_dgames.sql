@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2018 a las 15:32:32
+-- Tiempo de generación: 19-11-2018 a las 05:16:16
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -42,8 +42,15 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_Comentarios`, `Comentarios`, `id_Juego`, `id_Usuario`, `Fecha`, `Valoracion`) VALUES
-(8, 'lalalallal', 66, 29, '2018-11-07', 4),
-(9, 'lalalallal', 66, 29, '2018-11-07', 4);
+(70, 'sss', 66, 28, '2018-11-17', 2),
+(71, 'batman', 66, 28, '2018-11-17', 0),
+(72, 'miedo', 67, 28, '2018-11-17', 3),
+(73, 'gtaV', 65, 28, '2018-11-17', 5),
+(75, 'gran juego', 65, 28, '2018-11-17', 5),
+(76, 'primer comentario alien ', 68, 28, '2018-11-18', 2),
+(77, '', 68, 28, '2018-11-18', 2),
+(78, '', 68, 28, '2018-11-18', 1),
+(79, '', 68, 28, '2018-11-18', 3);
 
 -- --------------------------------------------------------
 
@@ -68,6 +75,57 @@ INSERT INTO `genero` (`id_Genero`, `Genero`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE `imagenes` (
+  `id_Imagen` int(11) NOT NULL,
+  `Img_path` text NOT NULL,
+  `id_Juego` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id_Imagen`, `Img_path`, `id_Juego`) VALUES
+(27, 'image/gtaV.jpg', 65),
+(28, 'image/batmanAC.jpg', 66),
+(32, 'image/slenderMan.jpg', 70),
+(33, 'image/godOfWar.jpg', 71),
+(34, 'image/godOfWar1.jpg', 71),
+(35, 'image/godOfWar2.jpg', 71),
+(36, 'image/godOfWar3.jpg', 71),
+(37, 'image/godOfWar4.jpg', 71),
+(38, 'image/godOfWar5.jpg', 71),
+(39, 'image/godOfWar6.jpg', 71),
+(50, 'image/gtaV1.jpg', 65),
+(51, 'image/gtaV2.jpg', 65),
+(52, 'image/gtaV3.jpg', 65),
+(53, 'image/batmanAC1.jpg', 66),
+(54, 'image/batmanAC2.jpg', 66),
+(55, 'image/batmanAC3.jpg', 66),
+(56, 'image/batmanAC4.jpg', 66),
+(57, 'image/theEvilWI.jpg', 67),
+(58, 'image/theEvilWI1.jpg', 67),
+(59, 'image/theEvilWI2.jpg', 67),
+(60, 'image/theEvilWI3.jpg', 67),
+(61, 'image/AlienI.jpg', 68),
+(62, 'image/AlienI-1.jpg', 68),
+(63, 'image/AlienI-2.jpg', 68),
+(64, 'image/AlienI-3.jpg', 68),
+(65, 'image/outlast.jpg', 69),
+(66, 'image/outlast1.jpg', 69),
+(67, 'image/outlast2.jpg', 69),
+(68, 'image/outlast3.jpg', 69),
+(69, 'image/slenderMan1.jpg', 70),
+(70, 'image/slenderMan2.jpg', 70),
+(71, 'image/slenderMan3.jpg', 70),
+(74, 'image/batmanAC3.jpg', 67);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `juegos`
 --
 
@@ -86,7 +144,6 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`id_Juego`, `Consola`, `id_Genero`, `Titulo`, `Descripcion`, `Precio`, `img_path`) VALUES
-(64, 'Pc', 13, 'Shadow of Colossus', 'El juego trata de un joven conocido únicamente como Wander, que debe viajar a caballo a través de un vasto territorio y derrotar a 16 gigantes, conocidos colectivamente como «Colossi» («colosos» en español) para devolver la vida a una joven llamada Mono. ', 699, './image/shadow.png'),
 (65, 'ps4', 12, 'GTA V', 'La historia transcurre en la remodelada ciudad de Los Santos, donde Michael, Trevor y Franklin trabajan individualmente hasta que se cruzan sus vidas y empiezan a trabajar en equipo robando bancos o realizando trabajos para diversos personajes.', 299, './image/gtaV.jpg'),
 (66, 'ps4', 12, 'Batman Arkham city', 'Bruce Wayne ofrece una conferencia de prensa para declarar su oposición a la creación de Arkham City. Un grupo de mercenarios de TYGER interrumpe la conferencia para arrestar a Wayne y encarcelarlo en Arkham City.', 599, './image/batmanAC.jpg'),
 (67, 'pc', 12, 'The Evil Within', 'Mientras investigaban la escena de un horripilante asesinato masivo en el Hospital Mental Beacon, el detective de la policía de la ciudad de Krimson Sebastian Castellanos, su compañero Joseph Oda y el joven detective Juli Kidman se encuentran repentinamente arrojados a un mundo irreal, después de escuchar un ruido agudo. Poco después de que esto ocurra, Sebastian se separa de sus compañeros y se ve obligado a huir de un monstruoso que maneja una motosierra.', 399, './image/theEvilWI.jpg'),
@@ -114,8 +171,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `Usuario`, `Password`, `Admin_permiso`) VALUES
 (28, 'juan@gmail.com', '$2y$10$x34ZWOKsIrKsQvhrMeC8Aeeom7mWzodhCyGfJ5QPJ6LXKz5sV6kyy', 1),
-(29, 'pedro@gmail.com', '$2y$10$ybxtT/m8lfJx3JxTTvgFdeUMhWkztKyVGNCkK/xuLISajLUwrCCJy', 0),
-(30, 'sasha@lala', '$2y$10$euL1HdQRq3uha/Ja2VrRCezw3v83/8pv9SIAPp8KDu/HpApxBx2hK', 0);
+(31, 'sasha@lala', '$2y$10$pH.DwTfzU.hunh5yXeDPU.1frSO2KqFm0HNuurFjhG5pG0Cu0EFhK', 0),
+(32, 'pedro@gmail.com', '$2y$10$7AQ5dtQc7xHFKReNDJWYOOtL5FR9wPlJSNfikC20GbnE18XIJfvO.', 0),
+(33, 'pepe@gmail.com', '$2y$10$KXtN9QU0yQDl9JON5GysVOqnG/f0HTRHiWaL7plK1yON6XexEyn8i', 0);
 
 --
 -- Índices para tablas volcadas
@@ -126,14 +184,21 @@ INSERT INTO `usuarios` (`id_usuario`, `Usuario`, `Password`, `Admin_permiso`) VA
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_Comentarios`),
-  ADD KEY `id_Juego` (`id_Juego`),
-  ADD KEY `id_Usuario` (`id_Usuario`);
+  ADD KEY `comentarios_ibfk_1` (`id_Juego`),
+  ADD KEY `comentarios_ibfk_2` (`id_Usuario`);
 
 --
 -- Indices de la tabla `genero`
 --
 ALTER TABLE `genero`
   ADD PRIMARY KEY (`id_Genero`);
+
+--
+-- Indices de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD PRIMARY KEY (`id_Imagen`),
+  ADD KEY `imagenes_ibfk_1` (`id_Juego`);
 
 --
 -- Indices de la tabla `juegos`
@@ -156,13 +221,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_Comentarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_Comentarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
   MODIFY `id_Genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  MODIFY `id_Imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`
@@ -174,7 +245,7 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
@@ -184,8 +255,14 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_Juego`) REFERENCES `juegos` (`id_Juego`),
-  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_Juego`) REFERENCES `juegos` (`id_Juego`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_Juego`) REFERENCES `juegos` (`id_Juego`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `juegos`

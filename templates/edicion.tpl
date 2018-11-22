@@ -3,12 +3,14 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title> </title>
+  <base href="//{$smarty.server.SERVER_NAME}{dirname($smarty.server.PHP_SELF)}/" target="_self">
 
+  <title> </title>
   <link rel="stylesheet" type="text/css" href="./style/estilo.css" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
 
   <div class="Navegador">
     <ul class="nav justify-content-center">
@@ -48,11 +50,15 @@
   </p>
     <input class="inputCarga" type="text" name="editTitulo" value="{$game['Titulo']}">
     <input class="inputCarga" type="number" name="editPrecio" value="{$game['Precio']}">
-    <textarea name="editDescripcion" rows="4" cols="54">{$game['Descripcion']}</textarea>
-    <input class="inputCarga" type="text" name="editImagen" value="{$game['img_path']}" placeholder="ingrese la direccion de la imagen">
+    <textarea name="editDescripcion" rows="5" cols="54">{$game['Descripcion']}</textarea>
     {/foreach}
     <button class="btn" type="submit"name="idEditar" value="{$game['id_Juego']}">Editar</button>
-  </form>
+      </form>
+    <form class="formCarga" action="agregarimg" method="post" enctype="multipart/form-data">
+      <input class="inputCarga" type="file" name="imagen[]" multiple value="" placeholder="Elegir imagenes">
+      <button class="btn" type="submit" name="id_Juego" value="{$game['id_Juego']}">Subir</button>
+    </form>
+
 </div>
 <div class="cuerpoEdicion" id="Cuerpo">
 
@@ -60,9 +66,19 @@
 <div class="infoTitulo">
   <h2>{$det['Titulo']}</h2>
 </div>
-<figure class="gameFig" >
-  <img class="gameImg" src="{$det['img_path']}" alt="Shadow of the colossus">
-</figure>
+<div class="contEditImg">
+  {foreach from=$imagenes item=img}
+  <figure class="editFig">
+    <img class="editImg"src="{$img['Img_path']}" alt="">
+    <form class="" action="deleteImg" method="post">
+        <input type="hidden" name="id_Juego" value="{$det['id_Juego']}">
+        <input type="hidden" name="delImg" value="{$img['id_Imagen']}">
+        <button type="submit" class="delBtn" name="" value="">X</button>
+    </form>
+
+  </figure>
+  {/foreach}
+</div>
 <div class="descripcion">
 <div class="info">
   <h5 class="infoGame">Genero: {$det['Genero']} |</h5>
@@ -78,6 +94,5 @@
 </div>
 </div>
 {include file="footer.tpl"}
-
 </body>
 </html>

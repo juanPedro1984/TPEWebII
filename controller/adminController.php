@@ -1,6 +1,6 @@
 <?php
 
-
+require_once './view/userView.php';
 require_once './view/adminView.php';
 require_once './model/adminModel.php';
 require_once './view/indexView.php';
@@ -8,7 +8,11 @@ require_once './model/userModel.php';
 require_once './view/registerView.php';
 require_once './view/edicionView.php';
 require_once './model/generoModel.php';
+require_once './model/imageModel.php';
+require_once './view/comentView.php';
 require_once 'securedController.php';
+
+
 
 class adminController extends SecuredController
 {
@@ -24,9 +28,15 @@ class adminController extends SecuredController
   private $edicionView;
   private $juego;
   private $generos;
+  private $imgModel;
+  private $usuariosView;
+  private $adComentView;
+
 
   function __construct(){
     parent::__construct();
+
+    $this->usuariosView = new userView();
 
     $this->view = new adminView();
     $this->titulo = "DigitalGames";
@@ -36,17 +46,25 @@ class adminController extends SecuredController
     $this->adminModel = new adminModel();
     $this->genModel = new generoModel();
     $this->edicionView = new EdicionView();
+    $this->imgModel = new ImageModel();
+    $this->adComentView = new ComentView();
+
+
 
     if($this->isAdmin() != true ){
       header(HOME);
     }
-
-
   }
 
-  function Admin(){
-    if(isset($_GET['seleccionarGenAdmin'])){
-      $this->categoria = $_GET['seleccionarGenAdmin'];
+  function Admin($gen=null){
+
+    if($gen[0] == "AllGames"){
+      $juegos = $this->adminModel->GetJuegos();
+      $generos = $this->genModel->GetGeneros();
+      $this->view->Mostrar($this->arrCat,$this->titulo,$juegos,$generos);
+    }
+    elseif(isset($gen)){
+      $this->categoria = $gen[0];
       $this->arrCat=$this->genModel->FiltroGen($this->categoria);
       $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
@@ -64,8 +82,7 @@ class adminController extends SecuredController
     $id_Genero=$_POST['selectGen'];
     $descripcion=$_POST['cargaDescripcion'];
     $precio=$_POST['cargaPrecio'];
-    $imagen=$_POST['cargaImagen'];
-    $this->adminModel->InsertJuego($consola,$titulo,$id_Genero,$descripcion,$precio,$imagen);
+    $this->adminModel->InsertJuego($consola,$titulo,$id_Genero,$descripcion,$precio);
     header(ADMIN);
   }
 
@@ -75,12 +92,23 @@ class adminController extends SecuredController
     header(ADMIN);
   }
 
-  function Edicion(){
-  $id=$_POST['idEditar'];
-  $this->generos = $this->genModel->GetGeneros();
-  $this->juego = $this->adminModel->GetDetalle($id);
-  $this->edicionView->Edicion($this->juego,$this->generos);
+  function Edicion($ide){
+    if(is_array($ide)){
+      $id=$ide[0];
+      $this->generos = $this->genModel->GetGeneros();
+      $this->juego = $this->adminModel->GetDetalle($id);
+      $imagenes=$this->imgModel->getImgById($id);
+      $this->edicionView->Edicion($this->juego,$this->generos,$imagenes);
+    }elseif(!is_array($ide)) {
+      $id=$ide;
+      $this->generos = $this->genModel->GetGeneros();
+      $this->juego = $this->adminModel->GetDetalle($id);
+      $imagenes=$this->imgModel->getImgById($id);
+      $this->edicionView->Edicion($this->juego,$this->generos,$imagenes);
+    }
+
   }
+
 
   function EditarJuego(){
     $id=$_POST['idEditar'];
@@ -114,6 +142,57 @@ class adminController extends SecuredController
     $genero=$_POST['editGen'];
     $this->genModel->EditarGenero($id_Genero,$genero);
     header(ADMIN);
+  }
+
+
+  function AgregarImg(){
+    $id_juego= $_REQUEST['id_Juego'];
+    $carpeta = 'image/';
+
+     if(isset($_FILES["imagen"]) && $_FILES["imagen"]["name"][0]){
+        for($i=0;$i<count($_FILES["imagen"]["name"]);$i++){
+          $origen = $_FILES['imagen']['tmp_name'][$i];
+          $destino = $carpeta.basename($_FILES["imagen"]["name"][$i]);
+    if (move_uploaded_file($origen,$destino)){
+      $data = $this->imgModel->AgregarImg($destino,$id_juego);
+      }
+    }
+      $this->Edicion($id_juego);
+  }else{
+      echo "error";
+    }
+  }
+
+  function DeleteImg()  {
+    $id_juego=$_POST['id_Juego'];
+    $id_Img=$_POST['delImg'];
+    $this->imgModel->DeleteImg($id_Img);
+    $this->Edicion($id_juego);
+  }
+
+  function adminUsers(){
+    $users = $this->userMod->GetUsers();
+    $this->usuariosView->usuariosView($users);
+  }
+
+  function adminPermisos(){
+    $permiso=$_GET['permiso'];
+    $idUser=$_GET['idUser'];
+    $this->userMod->adminPermisos($permiso,$idUser);
+    $this->adminUsers();
+    die();
+  }
+
+  function DeleteUser()
+  {
+  $idUser=$_GET['delUser'];
+  $this->userMod->DeleteUser($idUser);
+  $this->adminUsers();
+  }
+
+  function adminComent(){
+    $this->adComentView->adminComent();
+
   }
 
   }

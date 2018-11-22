@@ -1,0 +1,23 @@
+<h5>Opiniones de los usuarios</h5>
+<div class="opiniones">
+  <table>
+  <thead>
+    <td>Usuario</td>
+    <td>Juego</td>
+    <td>Comentario</td>
+    <td>Valoracion</td>
+    <td>Fecha</td>
+    <td></td>
+  </thead>
+  {{#each opiniones}}
+  <tr>
+    <td>{{Usuario}}</td>
+    <td>{{Titulo}}</td>
+    <td>{{Comentarios}}</td>
+    <td>{{Valoracion}}</td>
+    <td>{{Fecha}}</td>
+    <td><button type="button" class="delComent "name="button" value="{{id_Comentarios}}">borrar</button></td>
+  </tr>
+  {{/each}}
+    </table>
+</div>

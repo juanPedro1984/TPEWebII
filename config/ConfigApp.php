@@ -14,7 +14,7 @@ class ConfigApp{
   public static $ACTIONS = [
       ''=>'homeController#HomeController',
       'home'=>'homeController#HomeController',
-      'mostrarDetalle'=>'homeController#mostrarDetalle',
+      'Detalle'=>'homeController#mostrarDetalle',
       'administrador'=>'adminController#admin',
       'signIn'=>'homeController#verifyUser',
       'register'=>'homeController#signUp',
@@ -26,9 +26,15 @@ class ConfigApp{
       'borrarGen'=>'adminController#BorrarGenero',
       'editGen'=>'adminController#EditarGenero',
       'cargarRegistro'=>'signUpController#cargarRegistro',
-      'filtrar'=>'homeController#HomeController',
-      'filtrarAdmin'=>'adminController#Admin',
-      'logout'=>'securedController#logout'
+      'filtro'=>'homeController#HomeController',
+      'filtroAdmin'=>'adminController#Admin',
+      'logout'=>'securedController#logout',
+      'agregarimg'=>'adminController#AgregarImg',
+      'deleteImg'=>'adminController#DeleteImg',
+      'usuarios'=>'adminController#adminUsers',
+      'permiso'=>'adminController#adminPermisos',
+      'delUser'=>'adminController#DeleteUser',
+      'adminComent'=>'adminController#adminComent'
   ];
 }
 

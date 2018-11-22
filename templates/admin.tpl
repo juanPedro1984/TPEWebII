@@ -3,8 +3,9 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title> {$titulo} </title>
+  <base href="//{$smarty.server.SERVER_NAME}{dirname($smarty.server.PHP_SELF)}/" target="_self">
 
+  <title> {$titulo} </title>
   <link rel="stylesheet" type="text/css" href="./style/estilo.css" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
@@ -17,16 +18,25 @@
   <li class="nav-item">
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
-    <form action="filtrarAdmin" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <button type="submit" class="dropdown-item" formaction="administrador" >Todos los juegos</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="filtroAdmin/AllGames">Todos los juegos</a>
       {foreach from=$generos item=genero}
-        <button type="submit" class="dropdown-item" name="seleccionarGenAdmin" value="{$genero['id_Genero']}" >{$genero['Genero']}</button>
+        <a class="dropdown-item" href="filtroAdmin/{$genero['id_Genero']}">{$genero['Genero']}</a>
       {/foreach}
-    </form>
+    </div>
   </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="logout">Logout</a>
+  <div class="dropdown ">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</button>
+  <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+
+    {if isset ($smarty.session.User)}
+    {include file="logout.tpl"}
+    {/if}
+  </form>
+  </div>
+  </div>
   </li>
   </ul>
   </div>
@@ -47,11 +57,11 @@
       </p>
         <input class="inputCarga" type="number" name="cargaPrecio" value="" placeholder="ingrese precio del juego">
         <textarea name="cargaDescripcion" rows="4" cols="54" placeholder="ingrese breve descripcion"></textarea>
-        <input class="inputCarga" type="text" name="cargaImagen" value="" placeholder="ingrese la direccion de la imagen">
         <div class="buttons">
           <button class="btn" type="submit" name="button">Cargar</button>
         </div>
       </form>
+
     </div>
     <div class="formulario">
       <h2>Carga de Generos</h2>

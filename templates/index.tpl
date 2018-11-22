@@ -3,6 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <base href="//{$smarty.server.SERVER_NAME}{dirname($smarty.server.PHP_SELF)}/" target="_self">
   <title> DigitalGames.com</title>
   <link rel="stylesheet" type="text/css" href="./style/estilo.css" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -18,26 +19,33 @@
   <li class="nav-item">
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categoria </button>
-  <form action="filtrar" method="get" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <button type="submit" class="dropdown-item" formaction="" method="get" name="getAll" value="AllGames" >Todos los juegos</button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="filtro/AllGames">Todos los juegos</a>
     {foreach from=$generos item=genero}
-      <button type="submit" class="dropdown-item" name="seleccionarGen" value="{$genero['id_Genero']}" >{$genero['Genero']}</button>
+      <a class="dropdown-item" href="filtro/{$genero['id_Genero']}">{$genero['Genero']}</a>
     {/foreach}
-  </form>
+  </div>
   </div>
   </li>
 
+
   <li class="nav-item">
   <div class="dropdown ">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Iniciar sesion</button>
-  <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+  {if (isset($smarty.session.User)) && (isset ($user)) && ($user[0]['Admin_permiso']==0)}
+    <a class="nav-link" href="logout" id="Home">Logout</a>
+    {elseif (isset ($smarty.session.User)) &&  (isset ($user)) && ($user[0]['Admin_permiso']==1) }
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</button>
+    {else}
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Iniciar Sesion</button>
+  {/if}
 
+  <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
     {if isset ($smarty.session.User)}
     {include file="logout.tpl"}
     {else}
     {include file="signIn.tpl"}
     {/if}
-  </form>
+
   </div>
   </div>
   </li>
@@ -51,7 +59,7 @@
 
       {if $categorias !== null}
         {include file="generosIndex.tpl"}
-        {elseif $getAll !== null}
+        {elseif isset($getAll)}
         {include file="todosLosJuegos.tpl"}
         {else}
         {include file="text.tpl"}

@@ -8,7 +8,7 @@
     <h4 class="parr">Titulo: {$juego['Titulo']}</h4>
   <form class="boton btnLista" action="borrar" method="get">
     <button class="btn" type="submit" name="idBorrar" value="{$juego['id_Juego']}">Borrar</button>
-    <button class="btn" type="submit" name="idEditar" formaction="edicion" formmethod="post" value="{$juego['id_Juego']}">Editar</button>
+    <button class="btn" type="submit" name="idEditar" formaction="edicion/{$juego['id_Juego']}" formmethod="post" value="">Edicion y carga de imagenes</button>
   </form>
 </div>
   <hr>Consola: {$juego['Consola']}<br>Genero: {$juego['Genero']}<br>Precio: ${$juego['Precio']}<br>Descripcion: <br>{$juego['Descripcion']}<br><br>

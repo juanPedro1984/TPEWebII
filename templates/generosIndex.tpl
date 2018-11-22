@@ -1,6 +1,5 @@
 <h2>Juegos por genero</h2>
 
-  <form action="mostrarDetalle" method="get">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -12,11 +11,10 @@
       <tbody>
           {foreach from=$categorias item=categoria}
           <tr>
-          <td class="tdCategoria"><button type="submit" class="btnDet" name="checkDetalle" value="{$categoria['id_Juego']}">{$categoria['Titulo']}</button></td>
+          <td class="tdCategoria"><a class="tdJuego" href="Detalle/{$categoria['id_Juego']}" value="{$categoria['id_Juego']}">{$categoria['Titulo']}</a></td>
           <td class="tdCategoria">{$categoria['Consola']}</td>
           <td class="tdCategoria">{$categoria['Genero']}</td>
           </tr>
           {/foreach}
       </tbody>
     </table>
-  </form>

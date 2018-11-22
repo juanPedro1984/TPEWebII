@@ -6,6 +6,7 @@ require_once './view/registerView.php';
 require_once './model/adminModel.php';
 require_once './model/generoModel.php';
 require_once './view/detalleView.php';
+require_once './model/imageModel.php';
 
 class homeController
 {
@@ -20,8 +21,10 @@ class homeController
   private $categoria;
   private $detalle;
   private $getAll;
-  private $session_expired;
+  private $userSession;
   private $userId;
+  private $imgModel;
+  private $error;
 
   function __construct() {
     $this->index = new indexView();
@@ -30,24 +33,30 @@ class homeController
     $this->adminModel = new adminModel();
     $this->genModel = new generoModel();
     $this->detalleView = new DetalleView();
+    $this->imgModel = new ImageModel();
   }
 
-  function HomeController(){
-    if(isset($_GET['seleccionarGen'])){
-      $this->categoria = $_GET['seleccionarGen'];
+  function HomeController($gen=null){
+    session_start();
+    if (isset($_SESSION['User'])) {
+      $this->userSession = $this->userMod->GetUserById($_SESSION['User']);
+    }
+    if($gen[0] == "AllGames"){
+      $this->getAll = $gen[0];
+      $juegos = $this->adminModel->GetJuegos();
+      $generos = $this->genModel->GetGeneros();
+      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll,$this->userSession,$this->error);
+    }elseif (isset($gen)){
+      $this->categoria = $gen[0];
       $this->arrCat=$this->genModel->FiltroGen($this->categoria);
       $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
-      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
-    }elseif(isset($_GET['getAll'])){
-      $this->getAll = $_GET['getAll'];
+      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll,$this->userSession,$this->error);
+    }
+      else{
       $juegos = $this->adminModel->GetJuegos();
       $generos = $this->genModel->GetGeneros();
-      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
-    }else{
-      $juegos = $this->adminModel->GetJuegos();
-      $generos = $this->genModel->GetGeneros();
-      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll);
+      $this->index->Home($this->arrCat,$juegos,$generos,$this->getAll,$this->userSession,$this->error);
     }
   }
 
@@ -57,10 +66,11 @@ class homeController
   }
 
   function verifyUser(){
+    $this->error="";
     $user = $_POST['Documento'];
     $pass = $_POST['Contraseña'];
-    $userDb= $this->userMod->GetUsers($user);
-    if (isset($userDb)) {
+    $userDb= $this->userMod->VerifyUser($user);
+    if (!empty($userDb)) {
       if ((password_verify($pass, $userDb[0]['Password']))) {
         switch ($userDb[0]['Admin_permiso']) {
           case '1':
@@ -74,14 +84,17 @@ class homeController
               header(HOME);
             break;
           default:
+              $this->error = "Usuario no registrado";
               header(HOME);
-              echo "contraseña incorrecta";
             break;
         }
       }else{
-        header (HOME);
-        echo "usuario no existe";
+          $this->error = "Contraseña incorrecta";
+          header(HOME);
       }
+  }else{
+        $this->error = "El usuario no existe";
+        header(HOME);
   }
 }
 
@@ -94,10 +107,11 @@ class homeController
     }
     if (isset($id)){
       if (isset($user)){
-    $this->userId = $this->userMod->GetUsers($user);
+    $this->userId = $this->userMod->GetUserById($user);
   }
+    $imagenes=$this->imgModel->getImgById($id);
     $this->detalle = $this->adminModel->GetDetalle($id);
-    $this->detalleView->mostrarDet($this->detalle,$this->userId);
+    $this->detalleView->mostrarDet($this->detalle,$this->userId,$imagenes);
   }
 }
 

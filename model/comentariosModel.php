@@ -26,12 +26,12 @@ class comentariosModel
 }
 
   function GetComentario($id_Coment){
-    $sentencia = $this->db->prepare("select * from comentarios, juegos, usuarios where comentarios.id_Comentarios = ? and juegos.id_Juego = comentarios.id_juego and usuarios.id_usuario = comentarios.id_Usuario");
+    $sentencia = $this->db->prepare("select * from comentarios, juegos, usuarios where comentarios.id_Juego = ? and juegos.id_Juego = comentarios.id_juego and usuarios.id_usuario = comentarios.id_Usuario");
     $sentencia->execute(array($id_Coment));
     $comentario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     return $comentario;
   }
-  
+
   function DeleteComentario($id_Coment){
     $comentario = $this->GetComentario($id_Coment);
     if(isset($comentario)){

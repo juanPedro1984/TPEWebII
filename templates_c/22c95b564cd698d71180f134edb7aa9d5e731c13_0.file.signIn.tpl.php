@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-14 23:43:48
+/* Smarty version 3.1.33, created on 2018-11-21 21:41:11
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\signIn.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc3b894211973_99918806',
+  'unifunc' => 'content_5bf5c2e753f1f1_12104576',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '22c95b564cd698d71180f134edb7aa9d5e731c13' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\signIn.tpl',
-      1 => 1539553406,
+      1 => 1542832663,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bc3b894211973_99918806 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf5c2e753f1f1_12104576 (Smarty_Internal_Template $_smarty_tpl) {
 ?><form class="signIn" action="signIn" method="post">
 <div class="form-group">
   <label for="exampleInputEmail1">Email</label>
@@ -33,5 +33,6 @@ function content_5bc3b894211973_99918806 (Smarty_Internal_Template $_smarty_tpl)
 <button type="submit" class="btn btn-primary">Sign in</button>
 <small id="emailHelp" class="form-text text-muted">¿No estas registrado?</small>
 <button type="submit" formaction="register" class="btn btn-primary">Sign up</button>
+  </form>
 <?php }
 }

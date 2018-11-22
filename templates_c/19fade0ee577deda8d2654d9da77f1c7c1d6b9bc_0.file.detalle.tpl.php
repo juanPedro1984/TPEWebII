@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-11-13 00:59:47
+/* Smarty version 3.1.33, created on 2018-11-21 21:24:29
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\detalle.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bea13f3e1b899_25351656',
+  'unifunc' => 'content_5bf5befd47e7d6_14770941',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '19fade0ee577deda8d2654d9da77f1c7c1d6b9bc' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\detalle.tpl',
-      1 => 1542067184,
+      1 => 1542831853,
       2 => 'file',
     ),
   ),
@@ -23,16 +23,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5bea13f3e1b899_25351656 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf5befd47e7d6_14770941 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title></title>
   <base href="//<?php echo $_SERVER['SERVER_NAME'];
 echo dirname($_SERVER['PHP_SELF']);?>
 /" target="_self">
+
+  <title></title>
   <link rel="stylesheet" type="text/css" href="./style/estilo.css" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
@@ -58,10 +59,44 @@ foreach ($_from as $_smarty_tpl->tpl_vars['det']->value) {
 "><?php echo $_smarty_tpl->tpl_vars['det']->value['Titulo'];?>
 </h2>
 </div>
+<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+<div class="contImg">
 <figure class="gameFig" >
-  <img class="gameImg" src="<?php echo $_smarty_tpl->tpl_vars['det']->value['img_path'];?>
-" alt="Shadow of the colossus">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active ">
+        <img class="d-block w-100 gameImg" src="<?php echo $_smarty_tpl->tpl_vars['imagenes']->value[0]['Img_path'];?>
+" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100 gameImg" src="<?php echo $_smarty_tpl->tpl_vars['imagenes']->value[1]['Img_path'];?>
+" alt="Second slide">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100 gameImg" src="<?php echo $_smarty_tpl->tpl_vars['imagenes']->value[2]['Img_path'];?>
+" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  </div>
+
 </figure>
+<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['detalle']->value, 'det');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['det']->value) {
+?>
 <div class="descripcion">
 <div class="info">
   <h5 class="infoGame">Genero: <?php echo $_smarty_tpl->tpl_vars['det']->value['Genero'];?>
@@ -97,7 +132,6 @@ $_smarty_tpl->_subTemplateRender('file:comenDisabled.tpl', $_smarty_tpl->cache_i
 <?php echo '<script'; ?>
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"><?php echo '</script'; ?>
 >
-
 </html>
 <?php }
 }

@@ -1,5 +1,6 @@
 "use strict";
 
+// mostrar comentarios en detalle
 let templateComent;
 
 fetch('js/templates/comentarios.handlebars')
@@ -10,10 +11,13 @@ fetch('js/templates/comentarios.handlebars')
 });
 
 function getOpiniones() {
-    fetch("api/comentarios")
+  let id=document.querySelector('.Titulo').title;
+  console.log(id);
+    fetch('api/comentarios/'+id)
     .then(response =>response.json())
     .then(jsonComent =>{
       mostrarOpiniones(jsonComent);
+      console.log(jsonComent);
     return jsonComent;
   })
 }
@@ -51,11 +55,11 @@ function insertComent() {
       "headers" : {"Content-Type":"application/json"},
       "body" : JSON.stringify(data)
     })
-    .then(function (r) {
-      if(!r.ok){
-        console.log("error")
-      }
-      return r.json()
+      .then(function (r) {
+        if(!r.ok){
+          console.log("error")
+        }
+      return r.json();
     })
     .then(function(json) {
     console.log(JSON.stringify(json));
@@ -63,6 +67,8 @@ function insertComent() {
     .catch(function(e) {
       console.log(e)
     })
+    document.querySelector('.comentarios').value=null;
+    setTimeout(getOpiniones,2000);
   }
 
 function getFecha() {
@@ -75,7 +81,7 @@ function getValue() {
   let valoracion = document.querySelectorAll('.stars');
   for (var i = 0; i < valoracion.length; i++) {
     let star=valoracion[i];
-  if (star.checked){
+    if (star.checked){
     return star.value;
   }
 }

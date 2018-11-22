@@ -10,3 +10,4 @@
 <button type="submit" class="btn btn-primary">Sign in</button>
 <small id="emailHelp" class="form-text text-muted">¿No estas registrado?</small>
 <button type="submit" formaction="register" class="btn btn-primary">Sign up</button>
+  </form>

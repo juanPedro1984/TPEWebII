@@ -24,7 +24,7 @@ function __construct()
 }
 
 function isAdmin(){
-  $userDb= $this->userMod->GetUsers($_SESSION['User']);
+  $userDb= $this->userMod->GetUserById($_SESSION['User']);
   if ($userDb[0]['Admin_permiso']==1){
   return true;
 }else{
