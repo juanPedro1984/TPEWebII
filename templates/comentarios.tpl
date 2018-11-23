@@ -1,12 +1,12 @@
 {foreach from=$userId item=id}
-<h4>Deja tu comentario {$id['Usuario']} </h4>
-<input type="hidden" class="userId" name="" value="{$id['id_usuario']}">
+    <h4>Deja tu comentario {$id['Usuario']} </h4>
+    <input type="hidden" class="userId" name="" value="{$id['id_usuario']}">
 {/foreach}
 
-<div class="comentRow">
-<textarea class="comentarios" name="name" rows="4" cols="80"placeholder="Dejanos tu comentario"></textarea>
-<button type="button" class="postComent" name="button">Enviar</button>
-</div>
+      <div class="comentRow">
+          <textarea class="comentarios" name="name" rows="4" cols="80"placeholder="Dejanos tu comentario"></textarea>
+          <button type="button" class="postComent" name="button">Enviar</button>
+      </div>
 
 
     <div class="comentCol">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-11-22 20:30:49
+/* Smarty version 3.1.33, created on 2018-11-23 03:27:13
   from 'C:\xampp\htdocs\proyectos\TPE-webII\TPE-webII\templates\comentarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bf703e936e828_32742662',
+  'unifunc' => 'content_5bf765812c99a7_13816029',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c08492ce1c0ae5cda84863e28e1b2917b3e67393' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\TPE-webII\\TPE-webII\\templates\\comentarios.tpl',
-      1 => 1542915042,
+      1 => 1542939684,
       2 => 'file',
     ),
   ),
@@ -20,24 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bf703e936e828_32742662 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf765812c99a7_13816029 (Smarty_Internal_Template $_smarty_tpl) {
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['userId']->value, 'id');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['id']->value) {
 ?>
-<h4>Deja tu comentario <?php echo $_smarty_tpl->tpl_vars['id']->value['Usuario'];?>
+    <h4>Deja tu comentario <?php echo $_smarty_tpl->tpl_vars['id']->value['Usuario'];?>
  </h4>
-<input type="hidden" class="userId" name="" value="<?php echo $_smarty_tpl->tpl_vars['id']->value['id_usuario'];?>
+    <input type="hidden" class="userId" name="" value="<?php echo $_smarty_tpl->tpl_vars['id']->value['id_usuario'];?>
 ">
 <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
-<div class="comentRow">
-<textarea class="comentarios" name="name" rows="4" cols="80"placeholder="Dejanos tu comentario"></textarea>
-<button type="button" class="postComent" name="button">Enviar</button>
-</div>
+      <div class="comentRow">
+          <textarea class="comentarios" name="name" rows="4" cols="80"placeholder="Dejanos tu comentario"></textarea>
+          <button type="button" class="postComent" name="button">Enviar</button>
+      </div>
 
 
     <div class="comentCol">

@@ -98,13 +98,13 @@ class adminController extends SecuredController
       $this->generos = $this->genModel->GetGeneros();
       $this->juego = $this->adminModel->GetDetalle($id);
       $imagenes=$this->imgModel->getImgById($id);
-      $this->edicionView->Edicion($this->juego,$this->generos,$imagenes);
+      $this->edicionView->Edicion($this->juego,$this->generos,$imagenes,$this->titulo);
     }elseif(!is_array($ide)) {
       $id=$ide;
       $this->generos = $this->genModel->GetGeneros();
       $this->juego = $this->adminModel->GetDetalle($id);
       $imagenes=$this->imgModel->getImgById($id);
-      $this->edicionView->Edicion($this->juego,$this->generos,$imagenes);
+      $this->edicionView->Edicion($this->juego,$this->generos,$imagenes,$this->titulo);
     }
 
   }
@@ -171,7 +171,7 @@ class adminController extends SecuredController
 
   function adminUsers(){
     $users = $this->userMod->GetUsers();
-    $this->usuariosView->usuariosView($users);
+    $this->usuariosView->usuariosView($users,$this->titulo);
   }
 
   function adminPermisos(){
@@ -190,7 +190,7 @@ class adminController extends SecuredController
   }
 
   function adminComent(){
-    $this->adComentView->adminComent();
+    $this->adComentView->adminComent($this->titulo);
 
   }
 
