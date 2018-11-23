@@ -13,7 +13,7 @@ fetch('js/templates/adminComent.handlebars')
 
 function getComentarios() {
     fetch('api/comentarios')
-    .then(response =>response.json())
+    .then(response => response.json())
     .then(jsonComent =>{
       mostrarComentarios(jsonComent);
       console.log(jsonComent);
@@ -27,6 +27,9 @@ function mostrarComentarios(jsonComent) {
 }
   let html = template(context);
   document.querySelector(".comentList").innerHTML = html;
+  let delBtn = document.querySelector('.delComent');
+  delBtn.addEventListener('click',deleteComent);
+
 }
 
 
@@ -34,13 +37,19 @@ function mostrarComentarios(jsonComent) {
 
 
 //borrar Comentarios
-document.querySelector('.delComent'),addEventListener('click',deleteComent);
+
 
 
 function deleteComent(){
-
-let id = document.querySelector('.delComent').value;
-
+let id;
+let rCheck = document.querySelectorAll('.radioComent');
+console.log(rCheck);
+for (var i = 0; i < rCheck.length; i++) {
+  let ide=rCheck[i];
+  if(ide.checked){
+    id = ide.value;
+    console.log(id);
+  }
   fetch('api/comentarios/'+id,{
       'method': 'DELETE',
   })
@@ -55,5 +64,7 @@ let id = document.querySelector('.delComent').value;
     .catch(function(e) {
       console.log(e)
     })
+
+  }
     setTimeout(getComentarios,500);
 }

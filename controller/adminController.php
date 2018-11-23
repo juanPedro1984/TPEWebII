@@ -118,11 +118,10 @@ class adminController extends SecuredController
     $id_Genero=$_POST['editGenero'];
     $descripcion=$_POST['editDescripcion'];
     $precio=$_POST['editPrecio'];
-    $imagen=$_POST['editImagen'];
-    $this->id = $this->adminModel->EditarJuego($id_juego,$consola,$titulo,$id_Genero,$descripcion,$precio,$imagen);
+    $this->id = $this->adminModel->EditarJuego($id_juego,$consola,$titulo,$id_Genero,$descripcion,$precio);
     $this->generos = $this->genModel->GetGeneros();
     $this->juego = $this->adminModel->GetDetalle($id);
-    $this->edicionView->Edicion($this->juego,$this->generos);
+    $this->Edicion($id);
   }
 
   function BorrarGenero(){
@@ -176,8 +175,8 @@ class adminController extends SecuredController
   }
 
   function adminPermisos(){
-    $permiso=$_GET['permiso'];
-    $idUser=$_GET['idUser'];
+    $permiso=$_POST['permiso'];
+    $idUser=$_POST['idUser'];
     $this->userMod->adminPermisos($permiso,$idUser);
     $this->adminUsers();
     die();

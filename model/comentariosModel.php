@@ -19,14 +19,14 @@ class comentariosModel
   }
 
   function GetComentarios(){
-    $sentencia = $this->db->prepare("select * from comentarios, juegos, usuarios where juegos.id_Juego = comentarios.id_juego and usuarios.id_usuario = comentarios.id_Usuario");
+    $sentencia = $this->db->prepare("select c.id_Comentarios, c.comentarios, c.Fecha, c.Valoracion, j.Titulo, u.Usuario from comentarios c, juegos j, usuarios u where j.id_Juego = c.id_juego and u.id_usuario = c.id_Usuario");
     $sentencia->execute();
     $comentarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     return $comentarios;
 }
 
   function GetComentario($id_Coment){
-    $sentencia = $this->db->prepare("select * from comentarios, juegos, usuarios where comentarios.id_Juego = ? and juegos.id_Juego = comentarios.id_juego and usuarios.id_usuario = comentarios.id_Usuario");
+    $sentencia = $this->db->prepare("select  c.id_Comentarios, c.comentarios, c.Fecha, c.Valoracion, j.Titulo, u.Usuario from comentarios c, juegos j, usuarios u where c.id_Juego = ? and j.id_Juego = c.id_juego and u.id_usuario = c.id_Usuario");
     $sentencia->execute(array($id_Coment));
     $comentario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     return $comentario;
@@ -41,16 +41,6 @@ class comentariosModel
     }
   }
 
-  function UpdateComent($comentario,$id_Juego,$id_Usuario,$fecha,$valoracion,$id)
-  {
-    $coment = $this->GetComentario($id);
-    if(isset($coment)){
-    $sentencia = $this->db->prepare("update comentarios set Comentarios=?,id_Juego=?,id_Usuario=?,Fecha=?,Valoracion=? where id_Comentarios=?");
-    $sentencia->execute(array($comentario,$id_Juego,$id_Usuario,$fecha,$valoracion,$id));
-    $modifyComent = $this->GetComentario($id);
-    return $modifyComent;
-  }
-}
 
 }
  ?>

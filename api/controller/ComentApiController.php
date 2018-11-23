@@ -21,18 +21,21 @@ class ComentApiController extends Api
   }
 
   function GetComentarios($id = null){
-    if(isset($id)){
-      $id_Coment = $id[0];
-      $data = $this->model->GetComentario($id_Coment);
+
+  if(isset($id)) {
+      $id_Juego = $id[0];
+      $data = $this->model->GetComentario($id_Juego);
     }else{
       $data = $this->model->GetComentarios();
     }
+
     if(isset($data)){
       return $this->json_response($data, 200);
     }
     else {
       return $this->json_response(null , 404);
     }
+
 }
 
     function DeleteComentario($param = null ){
@@ -46,16 +49,4 @@ class ComentApiController extends Api
       }
     }
 
-    function UpdateComentario($param){
-
-      if(count($param) == 1){
-        $id = $param[0];
-        $array = $this->getJSONData();
-        $response = $this->model->UpdateComent($array->Comentarios,$array->id_Juego,$array->id_Usuario,$array->Fecha,$array->Valoracion,$id);
-        return "Comentario modificado:".$this->json_response($response, 200);
-      }else{
-        return $this->json_response("No task specify", 300);
-
-      }
-    }
   }

@@ -1,23 +1,24 @@
 <h5>Opiniones de los usuarios</h5>
 <div class="opiniones">
-  <table>
+  <table class="tablaComent">
   <thead>
-    <td>Usuario</td>
-    <td>Juego</td>
-    <td>Comentario</td>
-    <td>Valoracion</td>
-    <td>Fecha</td>
-    <td></td>
+    <td class="filaComentHead">Usuario</td>
+    <td class="filaComentHead">Juego</td>
+    <td class="filaComentHead">Comentario</td>
+    <td class="filaComentHead">Valoracion</td>
+    <td class="filaComentHead">Fecha</td>
+    <td class="filaComentHead">Seleccionar</td>
   </thead>
   {{#each opiniones}}
   <tr>
-    <td>{{Usuario}}</td>
-    <td>{{Titulo}}</td>
-    <td>{{Comentarios}}</td>
-    <td>{{Valoracion}}</td>
-    <td>{{Fecha}}</td>
-    <td><button type="button" class="delComent "name="button" value="{{id_Comentarios}}">borrar</button></td>
+    <td class="filaComent">{{Usuario}}</td>
+    <td class="filaComent">{{Titulo}}</td>
+    <td class="filaComent">{{comentarios}}</td>
+    <td class="filaComent">{{Valoracion}}</td>
+    <td class="filaComent">{{Fecha}}</td>
+    <td class="filaComent"><input type="checkbox" class="radioComent" name="rbtn" value="{{id_Comentarios}}"></td>
   </tr>
   {{/each}}
     </table>
+    <button type="submit" class="delComent "name="button" value="">Borrar</button>
 </div>

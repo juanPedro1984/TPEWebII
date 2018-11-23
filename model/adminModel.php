@@ -34,9 +34,9 @@ class adminModel
 
   }
 
-  function EditarJuego($id_juego,$consola,$titulo,$id_Genero,$descripcion,$precio,$imagen){
-    $sentencia = $this->db->prepare("update juegos set Consola=?,Titulo=?,Descripcion=?,id_Genero=?,Precio=?,img_path=? where id_Juego=?");
-    $sentencia->execute(array($consola,$titulo,$descripcion,$id_Genero,$precio,$imagen,$id_juego));
+  function EditarJuego($id_juego,$consola,$titulo,$id_Genero,$descripcion,$precio){
+    $sentencia = $this->db->prepare("update juegos set Consola=?,Titulo=?,Descripcion=?,id_Genero=?,Precio=? where id_Juego=?");
+    $sentencia->execute(array($consola,$titulo,$descripcion,$id_Genero,$precio,$id_juego));
   }
 }
  ?>

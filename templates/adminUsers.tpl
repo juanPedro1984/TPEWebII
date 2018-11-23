@@ -1,35 +1,36 @@
 
-<table>
+<table class="tablaUser">
   <tr>
-    <td>Id de usuario</td>
-    <td>Nombre de usuario</td>
-    <td>Permiso de administrador</td>
-    <td></td>
+    <td class="filaUserHead">Id de usuario</td>
+    <td class="filaUserHead">Nombre de usuario</td>
+    <td class="filaUserHead">Permiso de administrador</td>
+    <td class="filaUserHead">Dar o negar permiso</td>
+    <td class="filaUserHead">Eliminar usuario</td>
   </tr>
   {foreach from=$usuarios item=user}
 
   <tr>
-    <td>{$user['id_usuario']} </td>
-    <td>{$user['Usuario']}</td>
-    <td>{if $user['Admin_permiso'] == 1}
+    <td class="filaUser">{$user['id_usuario']} </td>
+    <td class="filaUser">{$user['Usuario']}</td>
+    <td class="filaUser">{if $user['Admin_permiso'] == 1}
         Si
         {else}
         No
         {/if}
     </td>
-    <td>
-      <form class="" action="permiso" method="get">
+    <td class="filaUser">
+      <form class="" action="permiso" method="post">
       <input type="hidden" name="idUser" value="{$user['id_usuario']}">
       {if $user['Admin_permiso'] == 0}
-        <button type="submit" name="permiso" value="1">Conceder permiso</button>
+        <button type="submit" class="btn" name="permiso" value="1">Conceder permiso</button>
         {elseif  $user['Admin_permiso'] == 1}
-        <button type="submit" name="permiso" value="0">Revocar permiso</button>
+        <button type="submit" class="btn" name="permiso" value="0">Revocar permiso</button>
         {/if}
           </form>
     </td>
-    <td>
+    <td class="filaUser">
       <form class="" action="delUser" method="get">
-          <button type="submit"name="delUser" value="{$user['id_usuario']}">Eliminar Usuario</button></td>
+          <button type="submit" class="btn" name="delUser" value="{$user['id_usuario']}">Eliminar Usuario</button></td>
       </form>
     </tr>
 
